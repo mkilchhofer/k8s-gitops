@@ -1,0 +1,14 @@
+apiVersion: helm.cattle.io/v1
+kind: HelmChart
+metadata:
+  name: storage-nfs-data
+  namespace: kube-system
+spec:
+  chart: stable/nfs-client-provisioner
+  targetNamespace: persistent-storage
+  set:
+    nfs.server: "192.168.91.10"
+    nfs.path: "/volume1/kubernetes/nfs-data"
+    storageClass.defaultClass: "true"
+    storageClass.name: "nfs-data"
+    storageClass.reclaimPolicy: "Delete"
