@@ -11,3 +11,10 @@ spec:
     kubernetes.ingressEndpoint.useDefaultPublishedService: "true"
     ssl.defaultCert: <replace_with_base64_encoded_pem>
     ssl.defaultKey: <replace_with_base64_encoded_pem>
+  valuesContent: |-
+    dashboard:
+      enabled: true
+      domain: traefik.k8s.kilchhofer.info
+      ingress:
+        annotations:
+          traefik.ingress.kubernetes.io/redirect-entry-point: https
