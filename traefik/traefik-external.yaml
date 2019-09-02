@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: traefik-external
+---
+apiVersion: helm.cattle.io/v1
+kind: HelmChart
+metadata:
+  name: traefik-external
+  namespace: traefik-external
+spec:
+  chart: stable/traefik
+  set:
+    rbac.enabled: "true"
+    loadBalancerIP: "192.168.92.90"
+  valuesContent: |-
+    acme:
+      enabled: "true"
+      challengeType: "http-01"
+      domains.domainsList.main: "*.cloud.kilchhofer.info"
+      email: "postmaster@kilchhofer.info"
+      staging: false
+    dashboard:
+      enabled: true
+      domain: traefik-external.k8s.kilchhofer.info
+      ingress:
+        annotations:
+          kubernetes.io/ingress.class: traefik-internal
+          traefik.ingress.kubernetes.io/redirect-entry-point: https
+    kubernetes:
+      ingressClass: traefik-external
+      labelSelector: "traffic-type=external"
+    ssl:
+      enabled: "true"
+      enforced: "true"
+      sniStrict: "true"
