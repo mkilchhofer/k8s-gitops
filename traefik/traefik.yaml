@@ -1,16 +1,18 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: traefik-internal
+---
 apiVersion: helm.cattle.io/v1
 kind: HelmChart
 metadata:
-  name: traefik
-  namespace: kube-system
+  name: traefik-internal
+  namespace: traefik-internal
 spec:
   chart: stable/traefik
   set:
     rbac.enabled: "true"
-    ssl.enabled: "true"
     kubernetes.ingressEndpoint.useDefaultPublishedService: "true"
-    ssl.defaultCert: <replace_with_base64_encoded_pem>
-    ssl.defaultKey: <replace_with_base64_encoded_pem>
   valuesContent: |-
     dashboard:
       enabled: true
@@ -21,3 +23,8 @@ spec:
           traefik.ingress.kubernetes.io/redirect-entry-point: https
     kubernetes:
       ingressClass: traefik-internal
+    ssl:
+      enabled: "true"
+      enforced: "true"
+      defaultCert: <replace_with_base64_encoded_pem>
+      defaultKey: <replace_with_base64_encoded_pem>
