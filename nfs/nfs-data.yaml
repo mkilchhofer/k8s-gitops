@@ -5,6 +5,7 @@ metadata:
   namespace: kube-system
 spec:
   chart: stable/nfs-client-provisioner
+  version: "1.2.5"
   targetNamespace: persistent-storage
   set:
     nfs.server: "192.168.91.10"
