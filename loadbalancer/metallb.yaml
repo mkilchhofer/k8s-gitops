@@ -5,6 +5,7 @@ metadata:
   namespace: metallb-system
 spec:
   chart: stable/metallb
+  version: "0.11.1"
   valuesContent: |-
     configInline:
       address-pools:
