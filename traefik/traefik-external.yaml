@@ -10,6 +10,7 @@ metadata:
   namespace: traefik-external
 spec:
   chart: stable/traefik
+  version: "1.77.0"
   set:
     rbac.enabled: "true"
     loadBalancerIP: "192.168.92.90"
