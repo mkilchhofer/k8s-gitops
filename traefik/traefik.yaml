@@ -15,6 +15,21 @@ spec:
     rbac.enabled: "true"
     kubernetes.ingressEndpoint.useDefaultPublishedService: "true"
   valuesContent: |-
+    acme:
+      enabled: "true"
+      challengeType: "dns-01"
+      delayBeforeCheck: 15
+      dnsProvider:
+        name: cloudflare
+        cloudflare:
+          CF_API_EMAIL: "marco.kilchhofer@gmail.com"
+          CF_API_KEY: "<Cloudflare Global API Key>"
+      domains:
+        domainsList:
+          main: "*.k8s.kilchhofer.info"
+      email: "postmaster@kilchhofer.info"
+      logging: true
+      staging: false
     dashboard:
       enabled: true
       domain: traefik.k8s.kilchhofer.info
@@ -27,5 +42,4 @@ spec:
     ssl:
       enabled: "true"
       enforced: "true"
-      defaultCert: <replace_with_base64_encoded_pem>
-      defaultKey: <replace_with_base64_encoded_pem>
+      sniStrict: "true"
