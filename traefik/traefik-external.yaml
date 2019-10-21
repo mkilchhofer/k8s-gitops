@@ -3,6 +3,21 @@ kind: Namespace
 metadata:
   name: traefik-external
 ---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  labels:
+    app: traefik
+  name: traefik-logs
+  namespace: traefik-external
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+  storageClassName: nfs-data
+---
 apiVersion: helm.cattle.io/v1
 kind: HelmChart
 metadata:
@@ -15,6 +30,10 @@ spec:
     rbac.enabled: "true"
     loadBalancerIP: "192.168.92.90"
   valuesContent: |-
+    accessLogs:
+      enabled: "true"
+      filePath: "/var/log/traefik/access.log"
+      format: json
     acme:
       enabled: "true"
       challengeType: "http-01"
@@ -35,3 +54,10 @@ spec:
       enabled: "true"
       enforced: "true"
       sniStrict: "true"
+    extraVolumes:
+      - name: log-volume
+        persistentVolumeClaim:
+          claimName: traefik-logs
+    extraVolumeMounts:
+      - name: log-volume
+        mountPath: /var/log/traefik
