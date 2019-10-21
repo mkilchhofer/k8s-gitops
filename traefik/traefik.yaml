@@ -15,6 +15,7 @@ spec:
     rbac.enabled: "true"
     kubernetes.ingressEndpoint.useDefaultPublishedService: "true"
   valuesContent: |-
+    imageTag: "1.7.18"
     acme:
       enabled: "true"
       challengeType: "dns-01"
