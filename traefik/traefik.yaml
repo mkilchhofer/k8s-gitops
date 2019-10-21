@@ -3,6 +3,21 @@ kind: Namespace
 metadata:
   name: traefik-internal
 ---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  labels:
+    app: traefik
+  name: traefik-internal-logs
+  namespace: traefik-internal
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+  storageClassName: nfs-data
+---
 apiVersion: helm.cattle.io/v1
 kind: HelmChart
 metadata:
@@ -16,6 +31,10 @@ spec:
     kubernetes.ingressEndpoint.useDefaultPublishedService: "true"
   valuesContent: |-
     imageTag: "1.7.18"
+    accessLogs:
+      enabled: "true"
+      filePath: "/var/log/traefik/access.log"
+      format: json
     acme:
       enabled: "true"
       challengeType: "dns-01"
@@ -44,3 +63,10 @@ spec:
       enabled: "true"
       enforced: "true"
       sniStrict: "true"
+    extraVolumes:
+      - name: log-volume
+        persistentVolumeClaim:
+          claimName: traefik-internal-logs
+    extraVolumeMounts:
+      - name: log-volume
+        mountPath: /var/log/traefik
