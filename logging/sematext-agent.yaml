@@ -1,0 +1,23 @@
+apiVersion: helm.cattle.io/v1
+kind: HelmChart
+metadata:
+  name: sematext-agent
+  namespace: logging
+spec:
+  chart: stable/sematext-agent
+  version: "1.0.20"
+  set:
+    logsToken: <INSERT_TOKEN_HERE>
+    region: "EU"
+    logsReceiverUrl: https://logsene-receiver.eu.sematext.com
+  valuesContent: |-
+    logagent:
+      config:
+        LOG_GLOB: "/var/log/containers/*.log;/var/log/*.log"
+      extraHostVolumeMounts:
+        - name: var-log-containers
+          hostPath: /var/log/containers
+          mountPath: /var/log/containers
+        - name: var-log-pods
+          hostPath: /var/log/pods
+          mountPath: /var/log/pods
