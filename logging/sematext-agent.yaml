@@ -9,11 +9,10 @@ spec:
   set:
     logsToken: <INSERT_TOKEN_HERE>
     region: "EU"
-    logsReceiverUrl: https://logsene-receiver.eu.sematext.com
   valuesContent: |-
     logagent:
       config:
-        LOG_GLOB: "/var/log/containers/*.log;/var/log/*.log"
+        LOG_GLOB: "/var/log/containers/*.log"
       extraHostVolumeMounts:
         - name: var-log-containers
           hostPath: /var/log/containers
