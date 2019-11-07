@@ -1,0 +1,36 @@
+apiVersion: helm.cattle.io/v1
+kind: HelmChart
+metadata:
+  name: fluent-bit
+  namespace: logging
+spec:
+  chart: stable/fluent-bit
+  version: 2.8.0
+  valuesContent: |-
+    image:
+      fluent_bit:
+        tag: 1.3.2-debug
+    backend:
+      type: es
+      es:
+        host: logsene-receiver.eu.sematext.com
+        port: 443
+        logstash_prefix: null
+        logstash_format: "Off"
+        replace_dots: null
+        time_key: null
+        index: <INSERT_TOKEN_HERE>
+        tls: "on"
+        type: logsene_type
+    input:
+      tail:
+        parser: cri
+    service:
+      flush: 5
+      logLevel: info
+    metrics:
+      enabled: true
+    extraEntries:
+      filter: |-
+        Annotations         Off
+        Labels              Off
