@@ -3,7 +3,7 @@
 ## Master
 
 ```bash
-[root@k3s-master ~]# INSTALL_K3S_EXEC="--no-deploy=traefik,servicelb,local-storage" /home/mkilchhofer/k3s/install.sh |tee -a /home/mkilchhofer/k3s/install_20191101.log
+[root@k3s-master k3s-install]# INSTALL_K3S_EXEC="--no-deploy=traefik,servicelb,local-storage" ./install.sh |tee -a install_2019<date>.log
 ```
 
 ## Nodes
