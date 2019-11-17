@@ -31,9 +31,16 @@ spec:
     kubernetes.ingressEndpoint.useDefaultPublishedService: "true"
   valuesContent: |-
     imageTag: "1.7.19"
+    traefikLogFormat: "json"
     accessLogs:
       enabled: "true"
-      filePath: "/var/log/traefik/access.log"
+      fields:
+        names:
+          BackendURL: drop
+          ClientAddr: drop
+          StartLocal: drop
+        headers:
+          defaultMode: drop
       format: json
     acme:
       enabled: "true"
