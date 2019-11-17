@@ -33,3 +33,6 @@ spec:
       filter: |-
         Annotations         Off
         Labels              Off
+    trackOffsets: true
+    taildb:
+      directory: /var/lib/fluent-bit
