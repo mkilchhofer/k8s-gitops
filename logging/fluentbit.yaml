@@ -18,7 +18,6 @@ spec:
         logstash_prefix: null
         logstash_format: "Off"
         replace_dots: null
-        time_key: null
         index: <INSERT_TOKEN_HERE>
         tls: "on"
         type: logsene_type
