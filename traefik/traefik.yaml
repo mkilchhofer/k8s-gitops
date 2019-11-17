@@ -25,12 +25,12 @@ metadata:
   namespace: traefik-internal
 spec:
   chart: stable/traefik
-  version: "1.77.0"
+  version: "1.79.0"
   set:
     rbac.enabled: "true"
     kubernetes.ingressEndpoint.useDefaultPublishedService: "true"
   valuesContent: |-
-    imageTag: "1.7.18"
+    imageTag: "1.7.19"
     accessLogs:
       enabled: "true"
       filePath: "/var/log/traefik/access.log"
