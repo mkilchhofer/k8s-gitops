@@ -69,6 +69,7 @@ spec:
     ssl:
       enabled: "true"
       enforced: "true"
+      insecureSkipVerify: "true"
       sniStrict: "true"
     extraVolumes:
       - name: log-volume
