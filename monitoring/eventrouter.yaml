@@ -5,7 +5,6 @@ metadata:
   name: eventrouter
   namespace: monitoring
 spec:
-  chart: stable/eventrouter
-  version: "0.2.1"
+  chart: https://%{KUBERNETES_API}%/static/charts/eventrouter-0.2.2.tgz
   valuesContent: |-
     sink: "stdout"
