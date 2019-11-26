@@ -1,0 +1,11 @@
+---
+apiVersion: helm.cattle.io/v1
+kind: HelmChart
+metadata:
+  name: eventrouter
+  namespace: monitoring
+spec:
+  chart: stable/eventrouter
+  version: "0.2.1"
+  valuesContent: |-
+    sink: "stdout"
