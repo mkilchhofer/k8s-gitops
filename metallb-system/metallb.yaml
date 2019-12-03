@@ -10,6 +10,10 @@ spec:
     configInline:
       address-pools:
       - name: default
-        protocol: layer2
+        protocol: bgp
         addresses:
-        - 192.168.92.60-192.168.92.90
+        - 192.168.93.10-192.168.93.90
+      peers:
+      - peer-address: 192.168.92.1
+        peer-asn: 64512
+        my-asn: 64513
