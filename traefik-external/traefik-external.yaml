@@ -31,9 +31,16 @@ spec:
     loadBalancerIP: "192.168.93.90"
   valuesContent: |-
     externalTrafficPolicy: Local
+    traefikLogFormat: "json"
     accessLogs:
       enabled: "true"
-      filePath: "/var/log/traefik/access.log"
+      fields:
+        names:
+          BackendURL: drop
+          ClientAddr: drop
+          StartLocal: drop
+        headers:
+          defaultMode: drop
       format: json
     acme:
       enabled: "true"
