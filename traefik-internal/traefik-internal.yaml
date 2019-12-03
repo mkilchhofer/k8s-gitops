@@ -31,6 +31,7 @@ spec:
     kubernetes.ingressEndpoint.useDefaultPublishedService: "true"
     loadBalancerIP: "192.168.93.89"
   valuesContent: |-
+    externalTrafficPolicy: Local
     imageTag: "1.7.19"
     traefikLogFormat: "json"
     accessLogs:
