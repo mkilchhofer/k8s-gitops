@@ -29,7 +29,9 @@ spec:
   set:
     rbac.enabled: "true"
     loadBalancerIP: "192.168.93.90"
+  helmVersion: "v2"
   valuesContent: |-
+    imageTag: "1.7.20"
     externalTrafficPolicy: Local
     traefikLogFormat: "json"
     accessLogs:
