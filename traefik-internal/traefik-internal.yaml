@@ -3,21 +3,23 @@ kind: Namespace
 metadata:
   name: traefik-internal
 ---
-apiVersion: helm.cattle.io/v1
-kind: HelmChart
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
 metadata:
   name: traefik-internal
   namespace: traefik-internal
 spec:
-  chart: stable/traefik
-  version: "1.79.0"
-  set:
-    rbac.enabled: "true"
-    kubernetes.ingressEndpoint.useDefaultPublishedService: "true"
+  releaseName: traefik-internal
+  chart:
+    repository: https://kubernetes-charts.storage.googleapis.com/
+    name: traefik
+    version: "1.79.0"
+  values:
+    rbac:
+      enabled: "true"
     loadBalancerIP: "192.168.93.89"
-  valuesContent: |-
+    imageTag: "1.7.20"
     externalTrafficPolicy: Local
-    imageTag: "1.7.19"
     traefikLogFormat: "json"
     accessLogs:
       enabled: "true"
@@ -53,6 +55,8 @@ spec:
           traefik.ingress.kubernetes.io/redirect-entry-point: https
     kubernetes:
       ingressClass: traefik-internal
+      ingressEndpoint:
+        useDefaultPublishedService: "true"
     ssl:
       enabled: "true"
       enforced: "true"
