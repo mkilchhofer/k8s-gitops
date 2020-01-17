@@ -1,11 +1,14 @@
 ---
-apiVersion: helm.cattle.io/v1
-kind: HelmChart
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
 metadata:
   name: eventrouter
   namespace: monitoring
 spec:
-  chart: stable/eventrouter
-  version: "0.2.3"
-  valuesContent: |-
+  releaseName: eventrouter
+  chart:
+    repository: https://kubernetes-charts.storage.googleapis.com/
+    name: eventrouter
+    version: "0.2.3"
+  values:
     sink: "stdout"
