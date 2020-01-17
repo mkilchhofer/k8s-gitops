@@ -3,21 +3,6 @@ kind: Namespace
 metadata:
   name: traefik-internal
 ---
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  labels:
-    app: traefik
-  name: traefik-internal-logs
-  namespace: traefik-internal
-spec:
-  accessModes:
-  - ReadWriteOnce
-  resources:
-    requests:
-      storage: 5Gi
-  storageClassName: nfs-data
----
 apiVersion: helm.cattle.io/v1
 kind: HelmChart
 metadata:
@@ -73,10 +58,3 @@ spec:
       enforced: "true"
       insecureSkipVerify: "true"
       sniStrict: "true"
-    extraVolumes:
-      - name: log-volume
-        persistentVolumeClaim:
-          claimName: traefik-internal-logs
-    extraVolumeMounts:
-      - name: log-volume
-        mountPath: /var/log/traefik
