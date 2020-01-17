@@ -1,12 +1,17 @@
-apiVersion: helm.cattle.io/v1
-kind: HelmChart
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
 metadata:
   name: metallb
   namespace: metallb-system
 spec:
-  chart: stable/metallb
-  version: "0.11.1"
-  valuesContent: |-
+  releaseName: metallb-system
+  rollback:
+    enable: true
+  chart:
+    repository: https://kubernetes-charts.storage.googleapis.com/
+    name: metallb
+    version: "0.11.1"
+  values:
     configInline:
       address-pools:
       - name: default
