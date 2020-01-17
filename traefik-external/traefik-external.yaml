@@ -3,19 +3,23 @@ kind: Namespace
 metadata:
   name: traefik-external
 ---
-apiVersion: helm.cattle.io/v1
-kind: HelmChart
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
 metadata:
   name: traefik-external
   namespace: traefik-external
 spec:
-  chart: stable/traefik
-  version: "1.77.0"
-  set:
-    rbac.enabled: "true"
+  releaseName: traefik-external
+  rollback:
+    enable: true
+  chart:
+    repository: https://kubernetes-charts.storage.googleapis.com/
+    name: traefik
+    version: "1.77.0"
+  values:
+    rbac:
+      enabled: "true"
     loadBalancerIP: "192.168.93.90"
-  helmVersion: "v2"
-  valuesContent: |-
     imageTag: "1.7.20"
     externalTrafficPolicy: Local
     traefikLogFormat: "json"
