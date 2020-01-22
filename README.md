@@ -25,3 +25,31 @@ sudo connmanctl config ethernet_42ce90d0d76d_cable --ipv6 off
 sudo connmanctl config ethernet_42ce90d0d76d_cable --domains localdomain
 sudo service connman restart
 ```
+
+## Helm Operator Installation (by Flux CD)
+
+Run these commands with helm v3
+
+Add the fluxcd repo:
+
+```sh
+helm repo add fluxcd https://charts.fluxcd.io
+```
+
+Install the HelmRelease CRD:
+
+```sh
+kubectl apply -f https://raw.githubusercontent.com/fluxcd/helm-operator/master/deploy/flux-helm-release-crd.yaml
+```
+
+Install Helm Operator for Tiller in the fluxcd namespace:
+
+Install Helm Operator for Helm v3 only:
+
+```sh
+helm upgrade -i helm-operator fluxcd/helm-operator \
+--namespace fluxcd \
+--set helm.versions=v3
+```
+
+Source: https://github.com/fluxcd/helm-operator/blob/master/chart/helm-operator/README.md
