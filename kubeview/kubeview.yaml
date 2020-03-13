@@ -1,0 +1,27 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: kubeview
+  namespace: kubeview
+spec:
+  releaseName: kubeview
+  rollback:
+    enable: true
+  chart:
+    git: https://github.com/mkilchhofer/kubeview.git
+    ref: master
+    path: deployments/helm/kubeview
+  values:
+    replicaCount: 1
+    image:
+      repository: bencuk/kubeview
+      tag: "0.1.12"
+    ingress:
+      enabled: true
+      annotations:
+        kubernetes.io/ingress.class: traefik-internal
+        traefik.ingress.kubernetes.io/redirect-entry-point: https
+      hosts:
+        - host: kubeview.tools.kilchhofer.info
+          paths:
+            - "/"
