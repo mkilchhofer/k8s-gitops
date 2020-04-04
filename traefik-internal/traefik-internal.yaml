@@ -42,13 +42,13 @@ spec:
           CF_API_KEY: "<Cloudflare Global API Key>"
       domains:
         domainsList:
-          main: "*.k8s.kilchhofer.info"
+          main: "*.tools.kilchhofer.info"
       email: "postmaster@kilchhofer.info"
       logging: true
       staging: false
     dashboard:
       enabled: true
-      domain: traefik.k8s.kilchhofer.info
+      domain: traefik.tools.kilchhofer.info
       ingress:
         annotations:
           kubernetes.io/ingress.class: traefik-internal
