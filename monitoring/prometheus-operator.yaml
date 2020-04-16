@@ -1,0 +1,48 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: prometheus-operator
+  namespace: monitoring
+spec:
+  releaseName: prometheus-operator
+  rollback:
+    enable: true
+  chart:
+    repository: https://kubernetes-charts.storage.googleapis.com/
+    name: prometheus-operator
+    version: "8.12.13"
+  values:
+    defaultRules:
+      rules:
+        etcd: false
+    kubeEtcd:
+      enabled: false
+    grafana:
+      ingress:
+        enabled: true
+        annotations:
+          kubernetes.io/ingress.class: traefik-internal
+          traefik.ingress.kubernetes.io/redirect-entry-point: https
+        hosts:
+          - grafana.tools.kilchhofer.info
+    prometheus:
+      ingress:
+        enabled: true
+        annotations:
+          kubernetes.io/ingress.class: traefik-internal
+          traefik.ingress.kubernetes.io/redirect-entry-point: https
+        hosts:
+          - prometheus.tools.kilchhofer.info
+      prometheusSpec:
+        storageSpec:
+          volumeClaimTemplate:
+            spec:
+              accessModes:
+                - "ReadWriteOnce"
+              resources:
+                requests:
+                  storage: "10Gi"
+              storageClassName: nfs-data
+    prometheusOperator:
+      kubeletService:
+        enabled: false
