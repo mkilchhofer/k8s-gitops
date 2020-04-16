@@ -48,6 +48,7 @@ Install Helm Operator for Helm v3 only:
 
 ```sh
 helm upgrade -i helm-operator fluxcd/helm-operator \
+--version 1.0.1 \
 --namespace fluxcd \
 --set helm.versions=v3
 ```
