@@ -15,7 +15,7 @@ spec:
   chart:
     repository: https://kubernetes-charts.storage.googleapis.com/
     name: traefik
-    version: "1.77.0"
+    version: "1.86.2"
   values:
     rbac:
       enabled: "true"
