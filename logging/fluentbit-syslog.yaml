@@ -1,0 +1,54 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: syslog-rfc3164
+  namespace: logging
+spec:
+  releaseName: syslog-rfc3164
+  rollback:
+    enable: true
+  chart:
+    git: https://github.com/mkilchhofer/charts.git
+    ref: feature/fluent-bit_deployment_variant2
+    path: stable/fluent-bit
+  values:
+    serviceAccount:
+      create: false
+    rbac:
+      create: false
+    
+    image:
+      fluent_bit:
+        repository: grafana/fluent-bit-plugin-loki
+        tag: latest
+    
+    controllerType: Deployment
+    
+    backend:
+      type: stdout
+    extraEntries:
+      output: |
+        [OUTPUT]
+            Name  stdout
+            Match *
+    
+        [OUTPUT]
+            Name  loki
+            Match *
+            Url http://loki-test.logging.svc:3100/loki/api/v1/push
+            TenantID syslog-rfc3164
+            LogLevel warn
+            LineFormat json
+            Labels {job="fluent-bit-syslog-rfc3164"}
+            LabelKeys pri,host,ident
+            RemoveKeys time,pid
+    
+    filter:
+      enabled: false
+    
+    input:
+      tail:
+        enabled: false
+      syslog:
+        enabled: true
+        loadBalancerIP: 192.168.93.85
