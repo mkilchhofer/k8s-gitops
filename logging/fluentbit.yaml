@@ -21,7 +21,6 @@ spec:
         logstash_prefix: null
         logstash_format: "Off"
         replace_dots: null
-        index: <INSERT_TOKEN_HERE>
         tls: "on"
         type: logsene_type
     input:
@@ -39,3 +38,6 @@ spec:
     trackOffsets: true
     taildb:
       directory: /var/lib/fluent-bit
+  valuesFrom:
+  - secretKeyRef:
+      name: fluent-bit-values

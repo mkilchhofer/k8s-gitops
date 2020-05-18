@@ -1,0 +1,14 @@
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  name: fluent-bit-values
+  namespace: logging
+spec:
+  encryptedData:
+    values.yaml: AgAmrSlhp1uQ4x1lhAluvKgwyl0QzMfNu/lGnSKDdHtLs/lOKbXkAk8ZSZc5CcRFRBkKePuOxaasnEGV6cqJ8k+Yo6pQ61X64cwMtLPyX+rrIKImng2h8el7NGfmtwHPVLeWXshF7uiNkIBjMXVAtPNTvM0mdYkPvsLH1FSqUuY0gej0XO4y2HwrsaCbYiLLJ5QJzmzttGld3CbJ1PK4uRRmHVVa2JR/1K1Sn28IxeKBLyTIVSiOwfJ3JNAj7X6eGbq61PZaOKC0CU8Yf97DqVID4Jivxzau51/AonanyhKBRYftIlaEHUE1NYZaeIypSWyyWBAjwvIhYOpUgtoI3ehZWfBg6vo9XFOvGdabJgKbfCzFtykxY31C8hb6q1XF3m/y/gPfhwtUi8lQU4V12KT2c1jbG9ePwH/0GexKbBwu/eyraY1UczBsaznjXeiPkdrdKITSJyF8MoWwo+Pq1eqJ066+mKpH6oBwq3fQ1lVZo/GWrTVGO/3at5eI37qRAqUELk0HOksDNiOhrErITNr9C2XsUZ8fK/GPemXC/LnaajP21242xYv+2Ivp4duaOV/ZEFjfjquHo3jtJ3cefNUhmCrwurYX/PrujidEBE9/sm8hdZQRUODdOZphrnDqR4wm2TIBuHET71+kNv4ZPHfR9btrh7lTfU3brPqk4oSk+qbgGiT1aJIKKAgcIX44ofUPvNcRQO0tHJsRW3H6EBl4vUezD8LfTazNb0QG7BMW/TKLceFrM7lQb3zPr9Y9mto2RvaUdw2KcwuY3q8muw==
+  template:
+    metadata:
+      name: fluent-bit-values
+      namespace: logging
+    type: Opaque
+
