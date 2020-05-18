@@ -39,7 +39,6 @@ spec:
         name: cloudflare
         cloudflare:
           CF_API_EMAIL: "marco.kilchhofer@gmail.com"
-          CF_API_KEY: "<Cloudflare Global API Key>"
       domains:
         domainsList:
           main: "*.tools.kilchhofer.info"
@@ -62,3 +61,6 @@ spec:
       enforced: "true"
       insecureSkipVerify: "true"
       sniStrict: "true"
+  valuesFrom:
+  - secretKeyRef:
+      name: traefik-internal-values
