@@ -41,6 +41,8 @@ spec:
       email: "postmaster@kilchhofer.info"
       logging: true
       staging: false
+      persistence:
+        storageClass: "nfs-data"
     dashboard:
       enabled: true
       domain: traefik.tools.kilchhofer.info
