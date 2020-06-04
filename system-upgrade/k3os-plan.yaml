@@ -5,7 +5,7 @@ metadata:
   # This `name` should be short but descriptive.
   name: k3os-plan
   # The same `namespace` as is used for the system-upgrade-controller Deployment.
-  namespace: k3os-system
+  namespace: system-upgrade
 spec:
   # The maximum number of concurrent nodes to apply this update on.
   concurrency: 1
