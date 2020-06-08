@@ -32,7 +32,7 @@ spec:
 
   # The service account for the pod to use. As with normal pods, if not specified the `default` service account from the namespace will be assigned.
   # See https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/
-  serviceAccountName: k3os-upgrade
+  serviceAccountName: system-upgrade
 
   # The prepare init container is run before cordon/drain which is run before the upgrade container.
   # Shares the same format as the `upgrade` container
