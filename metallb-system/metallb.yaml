@@ -22,3 +22,13 @@ spec:
       - peer-address: 192.168.92.1
         peer-asn: 64512
         my-asn: 64513
+    controller:
+      resources:
+        limits:
+          cpu: 100m
+          memory: 100Mi
+    speaker:
+      resources:
+        limits:
+          cpu: 100m
+          memory: 100Mi
