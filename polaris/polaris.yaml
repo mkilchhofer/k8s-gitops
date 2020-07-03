@@ -1,0 +1,22 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: polaris
+  namespace: polaris
+spec:
+  releaseName: polaris
+  rollback:
+    enable: true
+  chart:
+    repository: https://charts.fairwinds.com/stable
+    name: polaris
+    version: "1.2.0"
+  values:
+    dashboard:
+      ingress:
+        enabled: true
+        hosts:
+          - polaris.tools.kilchhofer.info
+        annotations:
+          kubernetes.io/ingress.class: traefik-internal
+          traefik.ingress.kubernetes.io/redirect-entry-point: https
