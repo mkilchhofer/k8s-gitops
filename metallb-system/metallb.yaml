@@ -8,9 +8,9 @@ spec:
   rollback:
     enable: true
   chart:
-    repository: https://kubernetes-charts.storage.googleapis.com/
+    repository: https://charts.bitnami.com/bitnami
     name: metallb
-    version: "0.11.1"
+    version: "0.1.15"
   values:
     configInline:
       address-pools:
