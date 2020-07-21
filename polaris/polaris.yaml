@@ -20,3 +20,8 @@ spec:
         annotations:
           kubernetes.io/ingress.class: traefik-internal
           traefik.ingress.kubernetes.io/redirect-entry-point: https
+          cert-manager.io/cluster-issuer: letsencrypt
+        tls:
+          - hosts:
+            - polaris.tools.kilchhofer.info
+            secretName: polaris-cert
