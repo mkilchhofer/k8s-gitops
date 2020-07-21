@@ -1,0 +1,59 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-staging
+  namespace: cert-manager
+spec:
+  acme:
+    server: https://acme-staging-v02.api.letsencrypt.org/directory
+    email: postmaster+rancher@kilchhofer.info
+
+    # Name of a secret used to store the ACME account private key
+    privateKeySecretRef:
+      name: letsencrypt-staging
+
+    # ACME DNS-01 provider configurations
+    solvers:
+
+    # We only use cloudflare to solve challenges for foo.com.
+    # Alternative options such as 'matchLabels' and 'dnsZones' can be specified
+    # as part of a solver's selector too.
+    - selector:
+        dnsZones:
+        - "tools.kilchhofer.info"
+      dns01:
+        cloudflare:
+          email: marco.kilchhofer@gmail.com
+          apiTokenSecretRef:
+            name: cloudflare-api-token-secret
+            key: api-token
+---
+apiVersion: cert-manager.io/v1alpha2
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt
+  namespace: cert-manager
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: postmaster+rancher@kilchhofer.info
+
+    # Name of a secret used to store the ACME account private key
+    privateKeySecretRef:
+      name: letsencrypt
+
+    # ACME DNS-01 provider configurations
+    solvers:
+
+    # We only use cloudflare to solve challenges for foo.com.
+    # Alternative options such as 'matchLabels' and 'dnsZones' can be specified
+    # as part of a solver's selector too.
+    - selector:
+        dnsZones:
+        - "tools.kilchhofer.info"
+      dns01:
+        cloudflare:
+          email: marco.kilchhofer@gmail.com
+          apiTokenSecretRef:
+            name: cloudflare-api-token-secret
+            key: api-token
