@@ -27,22 +27,6 @@ spec:
         headers:
           defaultMode: drop
       format: json
-    acme:
-      enabled: "true"
-      challengeType: "dns-01"
-      delayBeforeCheck: 15
-      dnsProvider:
-        name: cloudflare
-        cloudflare:
-          CF_API_EMAIL: "marco.kilchhofer@gmail.com"
-      domains:
-        domainsList:
-          main: "*.tools.kilchhofer.info"
-      email: "postmaster@kilchhofer.info"
-      logging: true
-      staging: false
-      persistence:
-        storageClass: "nfs-data"
     dashboard:
       enabled: true
       domain: traefik.tools.kilchhofer.info
@@ -50,6 +34,11 @@ spec:
         annotations:
           kubernetes.io/ingress.class: traefik-internal
           traefik.ingress.kubernetes.io/redirect-entry-point: https
+          cert-manager.io/cluster-issuer: letsencrypt
+        tls:
+          - hosts:
+            - traefik.tools.kilchhofer.info
+            secretName: traefik-internal-cert
     kubernetes:
       ingressClass: traefik-internal
       ingressEndpoint:
@@ -59,6 +48,3 @@ spec:
       enforced: "true"
       insecureSkipVerify: "true"
       sniStrict: "true"
-  valuesFrom:
-  - secretKeyRef:
-      name: traefik-internal-values
