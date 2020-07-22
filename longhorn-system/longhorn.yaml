@@ -1,0 +1,29 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: longhorn
+  namespace: longhorn-system
+spec:
+  releaseName: longhorn
+  rollback:
+    enable: false
+  chart:
+    git: https://github.com/longhorn/longhorn.git
+    ref: v1.0.0
+    path: chart
+  values:
+    persistence:
+      defaultClass: false
+      defaultClassReplicaCount: 2
+    
+    ingress:
+      enabled: true
+      host: longhorn.tools.kilchhofer.info
+    
+      annotations:
+        kubernetes.io/ingress.class: traefik-internal
+        traefik.ingress.kubernetes.io/redirect-entry-point: https
+        cert-manager.io/cluster-issuer: letsencrypt
+
+      tls: true
+      tlsSecret: longhorn-cert
