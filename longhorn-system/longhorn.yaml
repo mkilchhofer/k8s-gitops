@@ -8,9 +8,9 @@ spec:
   rollback:
     enable: false
   chart:
-    git: https://github.com/longhorn/longhorn.git
-    ref: v1.0.0
-    path: chart
+    repository: https://charts.longhorn.io
+    name: longhorn
+    version: "1.0.1"
   values:
     persistence:
       defaultClass: false
