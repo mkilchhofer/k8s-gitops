@@ -11,12 +11,11 @@ spec:
   chart:
     repository: https://kubernetes-charts.storage.googleapis.com/
     name: traefik
-    version: "1.86.2"
+    version: "1.87.2"
   values:
     rbac:
       enabled: "true"
     loadBalancerIP: "192.168.93.90"
-    imageTag: "1.7.20"
     externalTrafficPolicy: Local
     traefikLogFormat: "json"
     accessLogs:
