@@ -55,3 +55,4 @@ spec:
       enabled: "true"
       enforced: "true"
       sniStrict: "true"
+      tlsMinVersion: VersionTLS12
