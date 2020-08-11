@@ -21,6 +21,7 @@ spec:
     - selector:
         dnsZones:
         - "tools.kilchhofer.info"
+        - "tools-test.kilchhofer.info"
       dns01:
         cloudflare:
           email: marco.kilchhofer@gmail.com
@@ -51,6 +52,7 @@ spec:
     - selector:
         dnsZones:
         - "tools.kilchhofer.info"
+        - "tools-test.kilchhofer.info"
       dns01:
         cloudflare:
           email: marco.kilchhofer@gmail.com
