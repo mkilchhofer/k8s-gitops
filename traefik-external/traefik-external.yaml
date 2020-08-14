@@ -33,6 +33,7 @@ spec:
     rbac:
       enabled: "true"
     loadBalancerIP: "192.168.93.90"
+    imageTag: "1.7.26"
     externalTrafficPolicy: Local
     traefikLogFormat: "json"
     accessLogs:
