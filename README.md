@@ -33,7 +33,7 @@ Run these commands with helm v3
 Add the fluxcd repo:
 
 ```sh
-helm repo add fluxcd https://charts.fluxcd.io
+helm3 repo add fluxcd https://charts.fluxcd.io
 ```
 
 Install the HelmRelease CRD:
@@ -42,14 +42,14 @@ Install the HelmRelease CRD:
 kubectl apply -f https://raw.githubusercontent.com/fluxcd/helm-operator/1.2.0/deploy/crds.yaml
 ```
 
-Install Helm Operator for Tiller in the fluxcd namespace:
-
 Install Helm Operator for Helm v3 only:
 
 ```sh
-helm upgrade -i helm-operator fluxcd/helm-operator \
+kubectl create ns flux
+
+helm3 upgrade -i helm-operator fluxcd/helm-operator \
 --version 1.2.0 \
---namespace fluxcd \
+--namespace flux \
 --set helm.versions=v3
 ```
 
