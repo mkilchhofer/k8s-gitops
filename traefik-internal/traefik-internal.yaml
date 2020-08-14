@@ -48,7 +48,7 @@ spec:
       format: json
     dashboard:
       enabled: true
-      domain: traefik.tools.kilchhofer.info
+      domain: traefik.tools-test.kilchhofer.info
       ingress:
         annotations:
           kubernetes.io/ingress.class: traefik-internal
@@ -56,7 +56,7 @@ spec:
           cert-manager.io/cluster-issuer: letsencrypt
         tls:
           - hosts:
-            - traefik.tools.kilchhofer.info
+            - traefik.tools-test.kilchhofer.info
             secretName: traefik-internal-cert
     kubernetes:
       ingressClass: traefik-internal
