@@ -13,6 +13,23 @@ spec:
     name: traefik
     version: "1.87.2"
   values:
+    useNonPriviledgedPorts: true
+    podSecurityContext:
+      fsGroup: 2000
+    containerSecurityContext:
+      capabilities:
+        drop:
+        - ALL
+      readOnlyRootFilesystem: true
+      runAsNonRoot: true
+      runAsUser: 1000
+    resources:
+      limits:
+        cpu: 100m
+        memory: 60Mi
+      requests:
+        cpu: 10m
+        memory: 30Mi
     rbac:
       enabled: "true"
     loadBalancerIP: "192.168.93.90"
