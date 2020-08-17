@@ -12,3 +12,10 @@ spec:
     version: "0.3.0"
   values:
     sink: "stdout"
+    resources:
+      limits:
+       cpu: 50m
+       memory: 64Mi
+      requests:
+       cpu: 10m
+       memory: 16Mi
