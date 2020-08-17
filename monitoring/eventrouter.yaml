@@ -9,6 +9,6 @@ spec:
   chart:
     repository: https://kubernetes-charts.storage.googleapis.com/
     name: eventrouter
-    version: "0.2.3"
+    version: "0.3.0"
   values:
     sink: "stdout"
