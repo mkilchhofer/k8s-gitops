@@ -15,7 +15,7 @@ spec:
   channel: https://github.com/rancher/k3os/releases/latest
 
   # Providing a value for `version` will prevent polling/resolution of the `channel` if specified.
-  version: v0.10.2
+  version: v0.11.0
 
   # Select which nodes this plan can be applied to.
   nodeSelector:
