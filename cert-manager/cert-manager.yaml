@@ -12,3 +12,6 @@ spec:
     version: "v0.15.2"
   values:
     installCRDs: "true"
+    prometheus:
+      servicemonitor:
+        enabled: true
