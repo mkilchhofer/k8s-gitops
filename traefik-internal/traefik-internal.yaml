@@ -6,6 +6,7 @@ metadata:
   namespace: traefik-internal
 spec:
   releaseName: traefik-internal
+  maxHistory: 3
   chart:
     repository: https://kubernetes-charts.storage.googleapis.com/
     name: traefik

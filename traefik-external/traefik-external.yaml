@@ -6,8 +6,7 @@ metadata:
   namespace: traefik-external
 spec:
   releaseName: traefik-external
-  rollback:
-    enable: true
+  maxHistory: 3
   chart:
     repository: https://kubernetes-charts.storage.googleapis.com/
     name: traefik

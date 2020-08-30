@@ -5,8 +5,7 @@ metadata:
   namespace: polaris
 spec:
   releaseName: polaris
-  rollback:
-    enable: true
+  maxHistory: 3
   chart:
     repository: https://charts.fairwinds.com/stable
     name: polaris
