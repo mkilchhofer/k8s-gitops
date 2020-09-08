@@ -13,6 +13,9 @@ spec:
     version: "v0.15.2"
   values:
     installCRDs: "true"
+    extraArgs:
+      - --dns01-recursive-nameservers-only
+      - --dns01-recursive-nameservers=1.1.1.1:53
     prometheus:
       servicemonitor:
         enabled: true
