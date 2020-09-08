@@ -45,14 +45,6 @@ spec:
         headers:
           defaultMode: drop
       format: json
-    acme:
-      enabled: "true"
-      challengeType: "http-01"
-      domains.domainsList.main: "*.cloud.kilchhofer.info"
-      email: "postmaster@kilchhofer.info"
-      staging: false
-      persistence:
-        storageClass: "nfs-data"
     dashboard:
       enabled: true
       domain: traefik-external.tools.kilchhofer.info
@@ -67,9 +59,7 @@ spec:
             secretName: traefik-external-cert
     kubernetes:
       ingressClass: traefik-external
-      labelSelector: "traffic-type=external"
     ssl:
       enabled: "true"
-      enforced: "true"
       sniStrict: "true"
       tlsMinVersion: VersionTLS12

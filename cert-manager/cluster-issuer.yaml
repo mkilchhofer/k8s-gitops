@@ -28,6 +28,13 @@ spec:
           apiTokenSecretRef:
             name: cloudflare-api-token-secret
             key: api-token
+    - selector:
+        dnsZones:
+        - "kilchhofer.info"
+        - "cloud.kilchhofer.info"
+      http01:
+        ingress:
+          class: traefik-external
 ---
 apiVersion: cert-manager.io/v1alpha2
 kind: ClusterIssuer
@@ -59,3 +66,10 @@ spec:
           apiTokenSecretRef:
             name: cloudflare-api-token-secret
             key: api-token
+    - selector:
+        dnsZones:
+        - "kilchhofer.info"
+        - "cloud.kilchhofer.info"
+      http01:
+        ingress:
+          class: traefik-external
