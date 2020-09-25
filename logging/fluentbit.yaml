@@ -8,11 +8,11 @@ spec:
   chart:
     repository: https://kubernetes-charts.storage.googleapis.com/
     name: fluent-bit
-    version: "2.8.0"
+    version: "2.10.1"
   values:
     image:
       fluent_bit:
-        tag: 1.4.2-debug
+        tag: 1.5.6-debug
     backend:
       type: es
       es:
@@ -31,6 +31,8 @@ spec:
       logLevel: info
     metrics:
       enabled: true
+      serviceMonitor:
+        enabled: true
     extraEntries:
       filter: |-
         Annotations         Off
