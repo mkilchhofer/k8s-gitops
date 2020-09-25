@@ -8,26 +8,36 @@ spec:
   rollback:
     enable: true
   chart:
-    git: https://github.com/mkilchhofer/charts.git
-    ref: feature/fluent-bit_deployment_variant2
-    path: stable/fluent-bit
+    repository: https://fluent.github.io/helm-charts
+    name: fluent-bit
+    version: "0.7.1"
   values:
     serviceAccount:
       create: false
     rbac:
       create: false
-    
+
+    kind: Deployment
+
     image:
-      fluent_bit:
-        repository: grafana/fluent-bit-plugin-loki
-        tag: latest
-    
-    controllerType: Deployment
-    
-    backend:
-      type: stdout
-    extraEntries:
-      output: |
+      repository: grafana/fluent-bit-plugin-loki
+      tag: 1.6.1-amd64
+
+    extraPorts:
+      - name: syslog
+        containerPort: 5140
+        protocol: TCP
+        port: 5140
+
+    config:
+      inputs: |
+        [INPUT]
+            Name syslog
+            Parser syslog-rfc3164
+            Mode tcp
+            Port 5140
+
+      outputs: |
         [OUTPUT]
             Name  stdout
             Match *
@@ -43,12 +53,8 @@ spec:
             LabelKeys pri,host,ident
             RemoveKeys time,pid
     
-    filter:
-      enabled: false
+      filters: ""
     
-    input:
-      tail:
-        enabled: false
-      syslog:
-        enabled: true
-        loadBalancerIP: 192.168.93.85
+    service:
+      type: LoadBalancer
+      loadBalancerIP: 192.168.93.85
