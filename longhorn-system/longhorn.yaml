@@ -16,15 +16,3 @@ spec:
     persistence:
       defaultClass: false
       defaultClassReplicaCount: 2
-    
-    ingress:
-      enabled: true
-      host: longhorn.tools-test.kilchhofer.info
-    
-      annotations:
-        kubernetes.io/ingress.class: traefik-internal
-        traefik.ingress.kubernetes.io/redirect-entry-point: https
-        cert-manager.io/cluster-issuer: letsencrypt
-
-      tls: true
-      tlsSecret: longhorn-cert
