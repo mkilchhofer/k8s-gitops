@@ -50,7 +50,9 @@ kubectl create ns flux
 helm3 upgrade -i helm-operator fluxcd/helm-operator \
 --version 1.2.0 \
 --namespace flux \
---set helm.versions=v3
+--set helm.versions=v3 \
+--set chartsSyncInterval=15m \
+--set prometheus.serviceMonitor.create=true
 ```
 
 Source: https://github.com/fluxcd/helm-operator/blob/master/chart/helm-operator/README.md
