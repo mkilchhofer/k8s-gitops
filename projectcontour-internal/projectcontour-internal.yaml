@@ -5,16 +5,23 @@ metadata:
   namespace: projectcontour-internal
 spec:
   releaseName: projectcontour-internal
-  rollback:
-    enable: false
+  maxHistory: 3
+  skipCRDs: true
   chart:
     repository: https://charts.bitnami.com/bitnami
     name: contour
-    version: "1.2.0"
+    version: "2.3.4"
   values:
-    configInline:
-      ingress-status-address: '{{ .Values.envoy.service.loadBalancerIP }}'
-
     envoy:
+      useHostPort: false
+      containerPorts:
+        http: 8080
+        https: 8443
       service:
         loadBalancerIP: 192.168.93.83
+      containerSecurityContext:
+        runAsUser: 1001
+
+    prometheus:
+      serviceMonitor:
+        enabled: true
