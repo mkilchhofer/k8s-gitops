@@ -1,0 +1,37 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: kubernetes-event-exporter
+  namespace: monitoring
+spec:
+  releaseName: kubernetes-event-exporter
+  maxHistory: 3
+  chart:
+    repository: http://chartmuseum-chartmuseum.chartmuseum.svc.cluster.local:8080/
+    name: kubernetes-event-exporter
+    version: "1.0.0"
+  values:
+    config:
+      logLevel: debug
+      logFormat: pretty
+      receivers:
+        - name: "dump"
+          file:
+            path: "/dev/stdout"
+            layout:
+              message: "{{ .Message }}"
+              reason: "{{ .Reason }}"
+              type: "{{ .Type }}"
+              count: "{{ .Count }}"
+              kind: "{{ .InvolvedObject.Kind }}"
+              name: "{{ .InvolvedObject.Name }}"
+              namespace: "{{ .Namespace }}"
+              component: "{{ .Source.Component }}"
+              host: "{{ .Source.Host }}"
+      route:
+        routes:
+          - match:
+              - receiver: "dump"
+            # drop:
+            # - type: "Normal"
