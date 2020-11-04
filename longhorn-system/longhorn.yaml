@@ -16,3 +16,6 @@ spec:
     persistence:
       defaultClass: false
       defaultClassReplicaCount: 2
+    defaultSettings:
+      backupTarget: s3://longhorn-backup@us-east-1/
+      backupTargetCredentialSecret: s3-creds-longhorn
