@@ -10,9 +10,9 @@ spec:
   chart:
     repository: https://charts.jetstack.io
     name: cert-manager
-    version: "v0.16.1"
+    version: "v1.0.4"
   values:
-    installCRDs: "true"
+    installCRDs: false
     extraArgs:
       - --dns01-recursive-nameservers-only
       - --dns01-recursive-nameservers=1.1.1.1:53
