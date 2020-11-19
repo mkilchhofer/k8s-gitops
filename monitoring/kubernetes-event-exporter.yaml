@@ -10,8 +10,11 @@ spec:
   chart:
     repository: http://chartmuseum-chartmuseum.chartmuseum.svc.cluster.local:8080/
     name: kubernetes-event-exporter
-    version: "1.0.0"
+    version: "1.0.0-r4"
   values:
+    image:
+      repository: opsgenie/kubernetes-event-exporter
+      tag: 0.9
     config:
       logLevel: debug
       logFormat: pretty
