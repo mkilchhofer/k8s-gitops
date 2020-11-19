@@ -23,11 +23,17 @@ spec:
         peer-asn: 64512
         my-asn: 64513
     controller:
+      image:
+        repository: metallb/controller
+        tag: v0.9.5
       resources:
         limits:
           cpu: 100m
           memory: 100Mi
     speaker:
+      image:
+        repository: metallb/speaker
+        tag: v0.9.5
       resources:
         limits:
           cpu: 100m
