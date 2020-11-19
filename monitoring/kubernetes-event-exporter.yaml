@@ -16,7 +16,7 @@ spec:
       repository: opsgenie/kubernetes-event-exporter
       tag: 0.9
     config:
-      logLevel: debug
+      logLevel: warn
       logFormat: pretty
       receivers:
         - name: "dump"
@@ -36,5 +36,5 @@ spec:
         routes:
           - match:
               - receiver: "dump"
-            # drop:
-            # - type: "Normal"
+            drop:
+              - type: "Normal"
