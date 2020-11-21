@@ -10,9 +10,12 @@ spec:
   chart:
     repository: https://charts.bitnami.com/bitnami
     name: contour
-    version: "2.3.4"
+    version: "3.0.0"
   values:
     envoy:
+      image:
+        repository: envoyproxy/envoy
+        tag: v1.16.0
       useHostPort: false
       containerPorts:
         http: 8080
@@ -21,6 +24,10 @@ spec:
         loadBalancerIP: 192.168.93.83
       containerSecurityContext:
         runAsUser: 1001
+    contour:
+      image:
+        repository: projectcontour/contour
+        tag: v1.10.0
 
     prometheus:
       serviceMonitor:
