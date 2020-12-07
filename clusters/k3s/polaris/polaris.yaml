@@ -1,4 +1,4 @@
-apiVersion: helm.fluxcd.io/v1
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: polaris
@@ -6,10 +6,16 @@ metadata:
 spec:
   releaseName: polaris
   maxHistory: 3
+  interval: 5m
   chart:
-    repository: https://charts.fairwinds.com/stable
-    name: polaris
-    version: "1.2.2"
+    spec:
+      chart: polaris
+      version: "1.2.2"
+      sourceRef:
+        kind: HelmRepository
+        name: fairwinds-charts
+        namespace: flux-system
+      interval: 1m
   values:
     dashboard:
       ingress:

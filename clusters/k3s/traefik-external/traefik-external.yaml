@@ -1,5 +1,5 @@
 ---
-apiVersion: helm.fluxcd.io/v1
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: traefik-external
@@ -7,10 +7,16 @@ metadata:
 spec:
   releaseName: traefik-external
   maxHistory: 3
+  interval: 5m
   chart:
-    repository: https://kubernetes-charts.storage.googleapis.com/
-    name: traefik
-    version: "1.87.2"
+    spec:
+      chart: traefik
+      version: "1.87.2"
+      sourceRef:
+        kind: HelmRepository
+        name: kubernetes-stable-charts
+        namespace: flux-system
+      interval: 1m
   values:
     useNonPriviledgedPorts: true
     podSecurityContext:

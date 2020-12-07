@@ -1,14 +1,20 @@
-apiVersion: helm.fluxcd.io/v1
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: loki-s3
   namespace: logging
 spec:
   releaseName: loki-s3
+  interval: 5m
   chart:
-    repository: https://grafana.github.io/loki/charts
-    name: loki
-    version: "2.0.2"
+    spec:
+      chart: loki
+      version: "2.0.2"
+      sourceRef:
+        kind: HelmRepository
+        name: loki-charts
+        namespace: flux-system
+      interval: 1m
   values:
     ingress:
       enabled: true
