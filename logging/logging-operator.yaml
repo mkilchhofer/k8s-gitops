@@ -1,0 +1,13 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: logging-operator
+  namespace: logging
+spec:
+  releaseName: logging-operator
+  chart:
+    repository: https://kubernetes-charts.banzaicloud.com
+    name: logging-operator
+    version: "3.7.3"
+  values:
+    createCustomResource: false

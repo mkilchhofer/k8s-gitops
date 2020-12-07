@@ -1,0 +1,49 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: loki-s3
+  namespace: logging
+spec:
+  releaseName: loki-s3
+  chart:
+    repository: https://grafana.github.io/loki/charts
+    name: loki
+    version: "2.0.2"
+  values:
+    ingress:
+      enabled: true
+      annotations:
+        kubernetes.io/ingress.class: contour
+        ingress.kubernetes.io/force-ssl-redirect: "true"
+        cert-manager.io/cluster-issuer: letsencrypt
+      hosts:
+        - host: loki-test.tools.kilchhofer.info
+          paths: ["/"]
+      tls:
+        - secretName: loki-cert
+          hosts:
+            - loki-test.tools.kilchhofer.info
+    config:
+      schema_config:
+        configs:
+          - from: 2020-11-13
+            store: boltdb-shipper
+            object_store: aws
+            schema: v11
+            index:
+              prefix: index_
+              period: 24h
+      storage_config:
+        aws:
+          # Note: use a fully qualified domain name, like localhost.
+          # full example: http://loki:supersecret@localhost.:9000
+          #s3: https://<access_key_id>:<secret_access_key>@s3.ma.kilchhofer.info./loki-logs
+          bucketnames: loki-logs
+          endpoint: s3.ma.kilchhofer.info
+          s3forcepathstyle: true
+        boltdb_shipper:
+          shared_store: s3
+    env: []
+  valuesFrom:
+  - secretKeyRef:
+      name: loki-s3-values

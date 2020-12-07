@@ -1,0 +1,24 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: loki-grafana
+  namespace: logging
+spec:
+  releaseName: loki-grafana
+  chart:
+    repository: https://grafana.github.io/helm-charts
+    name: grafana
+    version: "6.1.4"
+  values:
+    ingress:
+      enabled: true
+      annotations:
+        kubernetes.io/ingress.class: contour
+        ingress.kubernetes.io/force-ssl-redirect: "true"
+        cert-manager.io/cluster-issuer: letsencrypt
+      hosts:
+        - loki-grafana.tools.kilchhofer.info
+      tls:
+        - secretName: loki-grafana-cert
+          hosts:
+            - loki-grafana.tools.kilchhofer.info
