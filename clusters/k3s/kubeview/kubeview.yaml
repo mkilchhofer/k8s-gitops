@@ -1,0 +1,37 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: kubeview
+  namespace: kubeview
+spec:
+  releaseName: kubeview
+  maxHistory: 3
+  interval: 5m
+  chart:
+    spec:
+      chart: kubeview
+      version: "0.1.13"
+      sourceRef:
+        kind: HelmRepository
+        name: chartmuseum-local-charts
+        namespace: flux-system
+      interval: 1m
+  values:
+    replicaCount: 1
+    image:
+      repository: bencuk/kubeview
+      tag: "0.1.13"
+    ingress:
+      enabled: true
+      annotations:
+        kubernetes.io/ingress.class: contour
+        ingress.kubernetes.io/force-ssl-redirect: "true"
+        cert-manager.io/cluster-issuer: letsencrypt
+      hosts:
+        - host: kubeview.tools.kilchhofer.info
+          paths:
+            - "/"
+      tls:
+        - hosts:
+          - kubeview.tools.kilchhofer.info
+          secretName: kubeview-cert

@@ -1,0 +1,32 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: polaris
+  namespace: polaris
+spec:
+  releaseName: polaris
+  maxHistory: 3
+  interval: 5m
+  chart:
+    spec:
+      chart: polaris
+      version: "1.2.2"
+      sourceRef:
+        kind: HelmRepository
+        name: fairwinds-charts
+        namespace: flux-system
+      interval: 1m
+  values:
+    dashboard:
+      ingress:
+        enabled: true
+        hosts:
+          - polaris.tools.kilchhofer.info
+        annotations:
+          kubernetes.io/ingress.class: contour
+          ingress.kubernetes.io/force-ssl-redirect: "true"
+          cert-manager.io/cluster-issuer: letsencrypt
+        tls:
+          - hosts:
+            - polaris.tools.kilchhofer.info
+            secretName: polaris-cert
