@@ -6,7 +6,8 @@ metadata:
 spec:
   releaseName: projectcontour-internal
   maxHistory: 3
-  skipCRDs: true
+  install:
+    skipCRDs: true
   interval: 5m
   chart:
     spec:
