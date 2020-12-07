@@ -5,8 +5,6 @@ metadata:
   namespace: metallb-system
 spec:
   releaseName: metallb-system
-  rollback:
-    enable: true
   interval: 5m
   chart:
     spec:
