@@ -43,13 +43,9 @@ spec:
 
       outputs: |
         [OUTPUT]
-            Name  stdout
-            Match *
-    
-        [OUTPUT]
             Name  loki
             Match *
-            Url http://loki-test.logging.svc:3100/loki/api/v1/push
+            Url http://loki-s3.logging.svc.cluster.local:3100/loki/api/v1/push
             TenantID syslog-rfc3164
             LogLevel warn
             LineFormat json
