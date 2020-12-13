@@ -1,0 +1,82 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: loki-stack
+  namespace: logging
+spec:
+  releaseName: loki-stack
+  interval: 5m
+  chart:
+    spec:
+      chart: loki-stack
+      version: "2.1.2"
+      sourceRef:
+        kind: HelmRepository
+        name: grafana-charts
+        namespace: flux-system
+      interval: 1m
+  values:
+    grafana:
+      enabled: true
+      ingress:
+        enabled: true
+        annotations:
+          kubernetes.io/ingress.class: contour
+          ingress.kubernetes.io/force-ssl-redirect: "true"
+          cert-manager.io/cluster-issuer: letsencrypt
+        hosts:
+          - loki-grafana.tools.kilchhofer.info
+        tls:
+          - secretName: loki-grafana-cert
+            hosts:
+              - loki-grafana.tools.kilchhofer.info
+
+    loki:
+      config:
+        schema_config:
+          configs:
+            - from: 2020-11-13
+              store: boltdb-shipper
+              object_store: aws
+              schema: v11
+              index:
+                prefix: index_
+                period: 24h
+        storage_config:
+          aws:
+            # Note: use a fully qualified domain name, like localhost.
+            # full example: http://loki:supersecret@localhost.:9000
+            #s3: https://<access_key_id>:<secret_access_key>@s3.ma.kilchhofer.info./loki-logs
+            bucketnames: loki-logs
+            endpoint: s3.ma.kilchhofer.info
+            s3forcepathstyle: true
+          boltdb_shipper:
+            shared_store: s3
+      env: []
+
+    promtail:
+      volumes:
+      - name: docker
+        hostPath:
+          path: /var/lib/docker/containers
+      - name: pods
+        hostPath:
+          path: /var/log/pods
+      - name: varlibpromtail
+        hostPath:
+          path: /var/lib/promtail
+      volumeMounts:
+      - name: docker
+        mountPath: /var/lib/docker/containers
+        readOnly: true
+      - name: pods
+        mountPath: /var/log/pods
+        readOnly: true
+      - name: varlibpromtail
+        mountPath: /var/lib/promtail
+      config:
+        positions:
+          filename: /var/lib/promtail/positions.yaml
+  valuesFrom:
+  - kind: Secret
+    name: loki-stack-values
