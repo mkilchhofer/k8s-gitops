@@ -16,19 +16,6 @@ spec:
         namespace: flux-system
       interval: 1m
   values:
-    ingress:
-      enabled: true
-      annotations:
-        kubernetes.io/ingress.class: contour
-        ingress.kubernetes.io/force-ssl-redirect: "true"
-        cert-manager.io/cluster-issuer: letsencrypt
-      hosts:
-        - host: loki-test.tools.kilchhofer.info
-          paths: ["/"]
-      tls:
-        - secretName: loki-cert
-          hosts:
-            - loki-test.tools.kilchhofer.info
     config:
       schema_config:
         configs:
