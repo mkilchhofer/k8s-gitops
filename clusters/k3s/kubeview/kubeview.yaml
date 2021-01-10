@@ -18,6 +18,8 @@ spec:
       interval: 1m
   values:
     replicaCount: 1
+    image:
+      tag: "0.1.18"
     ingress:
       enabled: true
       annotations:
