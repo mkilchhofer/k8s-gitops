@@ -10,7 +10,7 @@ spec:
   chart:
     spec:
       chart: kubeview
-      version: "0.1.13"
+      version: "0.1.17"
       sourceRef:
         kind: HelmRepository
         name: chartmuseum-local-charts
