@@ -83,8 +83,8 @@ spec:
             - name: etc-ssl
               mountPath: /etc/ssl
               readOnly: true
-            - name: etc-pki
-              mountPath: /etc/pki
+            - name: ca-certificates
+              mountPath: /usr/share/ca-certificates
               readOnly: true
             - name: tmp
               mountPath: /tmp
@@ -93,9 +93,9 @@ spec:
           hostPath:
             path: /etc/ssl
             type: Directory
-        - name: etc-pki
+        - name: ca-certificates
           hostPath:
-            path: /etc/pki
+            path: /usr/share/ca-certificates
             type: Directory
         - name: tmp
           emptyDir: {}
