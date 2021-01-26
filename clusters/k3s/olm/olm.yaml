@@ -1,5 +1,5 @@
-# https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.17.0/olm.yaml
 ---
+# https://github.com/operator-framework/operator-lifecycle-manager/releases/download/v0.17.0/olm.yaml
 apiVersion: v1
 kind: Namespace
 metadata:
