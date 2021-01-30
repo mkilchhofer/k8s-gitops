@@ -6,13 +6,11 @@ metadata:
 spec:
   releaseName: projectcontour-internal
   maxHistory: 3
-  install:
-    skipCRDs: true
   interval: 5m
   chart:
     spec:
       chart: contour
-      version: "3.3.0"
+      version: "4.0.0"
       sourceRef:
         kind: HelmRepository
         name: bitnami-charts
@@ -22,7 +20,7 @@ spec:
     envoy:
       image:
         repository: envoyproxy/envoy
-        tag: v1.16.0
+        tag: v1.16.2
       useHostPort: false
       containerPorts:
         http: 8080
@@ -34,7 +32,7 @@ spec:
     contour:
       image:
         repository: projectcontour/contour
-        tag: v1.10.0
+        tag: v1.11.0
 
     prometheus:
       serviceMonitor:
