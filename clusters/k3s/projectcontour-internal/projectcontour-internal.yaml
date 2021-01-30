@@ -39,7 +39,7 @@ spec:
         enabled: true
 
     defaultBackend:
-      enabled: true
+      enabled: false
 
       image:
         registry: k8s.gcr.io
