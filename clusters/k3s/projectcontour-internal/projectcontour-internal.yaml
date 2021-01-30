@@ -10,10 +10,10 @@ spec:
   chart:
     spec:
       chart: contour
-      version: "4.0.0"
+      version: "4.1.0-0.ingressv1"
       sourceRef:
         kind: HelmRepository
-        name: bitnami-charts
+        name: chartmuseum-local-charts
         namespace: flux-system
       interval: 1m
   values:
@@ -39,7 +39,7 @@ spec:
         enabled: true
 
     defaultBackend:
-      enabled: false
+      enabled: true
 
       image:
         registry: k8s.gcr.io
