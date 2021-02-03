@@ -17,6 +17,10 @@ spec:
         namespace: flux-system
       interval: 1m
   values:
+    config:
+      checks:
+        # reliability
+        pullPolicyNotAlways: ignore
     dashboard:
       ingress:
         enabled: true
