@@ -2,7 +2,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: polaris
-  namespace: polaris
+  namespace: monitoring
 spec:
   releaseName: polaris
   maxHistory: 3
