@@ -2,7 +2,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: kubeview
-  namespace: kubeview
+  namespace: monitoring
 spec:
   releaseName: kubeview
   maxHistory: 3
