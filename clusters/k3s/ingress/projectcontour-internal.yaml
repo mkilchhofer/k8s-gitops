@@ -2,7 +2,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: projectcontour-internal
-  namespace: projectcontour-internal
+  namespace: ingress
 spec:
   releaseName: projectcontour-internal
   maxHistory: 3
