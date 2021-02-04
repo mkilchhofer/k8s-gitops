@@ -2,7 +2,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: metallb
-  namespace: metallb-system
+  namespace: ingress
 spec:
   releaseName: metallb-system
   maxHistory: 3
