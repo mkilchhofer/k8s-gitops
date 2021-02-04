@@ -6,5 +6,5 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m
-  url: http://chartmuseum-chartmuseum.chartmuseum.svc.cluster.local:8080/
+  url: https://chartmuseum.tools.kilchhofer.info/
   timeout: 3m
