@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m0s
-  path: ./clusters/_olm-crds
+  path: ./_olm-crds
   prune: true
   sourceRef:
     kind: GitRepository
@@ -23,7 +23,7 @@ spec:
     - name: olm-crds
       namespace: flux-system
   interval: 10m0s
-  path: ./clusters/_olm
+  path: ./_olm
   prune: true
   sourceRef:
     kind: GitRepository
