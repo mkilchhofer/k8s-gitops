@@ -43,6 +43,8 @@ spec:
         cpu: 25m
       limits:
         memory: 1500Mi
+    securityContext:
+      runAsNonRoot: true
     deployRestic: true
     installCRDs: true
     restic:
