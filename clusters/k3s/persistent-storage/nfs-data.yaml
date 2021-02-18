@@ -22,3 +22,4 @@ spec:
     storageClass:
       defaultClass: true
       name: "nfs-data"
+      provisionerName: cluster.local/storage-nfs-data-nfs-client-provisioner
