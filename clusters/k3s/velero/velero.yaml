@@ -45,6 +45,8 @@ spec:
         memory: 1500Mi
     securityContext:
       runAsNonRoot: true
+      runAsGroup: 65534
+      runAsUser: 65534
     deployRestic: true
     installCRDs: true
     restic:
