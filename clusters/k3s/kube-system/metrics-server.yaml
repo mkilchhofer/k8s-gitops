@@ -18,6 +18,9 @@ spec:
         namespace: flux-system
       interval: 1m
   values:
+    apiService:
+      create: true
+
     extraArgs:
       cert-dir: /tmp
       kubelet-preferred-address-types: InternalIP,ExternalIP,Hostname
