@@ -11,16 +11,22 @@ spec:
   chart:
     spec:
       chart: metrics-server
-      version: "5.5.1"
+      version: "5.6.0-0"
       sourceRef:
         kind: HelmRepository
-        name: bitnami-charts
+        name: chartmuseum-local-charts
         namespace: flux-system
       interval: 1m
   values:
     apiService:
       create: true
 
+    image:
+      registry: k8s.gcr.io
+      repository: metrics-server/metrics-server
+      tag: v0.4.2
+
+    command:
     extraArgs:
       cert-dir: /tmp
       kubelet-preferred-address-types: InternalIP,ExternalIP,Hostname
