@@ -18,7 +18,22 @@ spec:
         namespace: flux-system
       interval: 1m
   values:
-    image:
-      registry: k8s.gcr.io
-      repository: metrics-server/metrics-server
-      tag: v0.4.1
+    extraArgs:
+      cert-dir: /tmp
+      kubelet-preferred-address-types: InternalIP,ExternalIP,Hostname
+      kubelet-use-node-status-port: {}
+
+    extraVolumeMounts:
+      - mountPath: /tmp
+        name: tmpdir
+
+    extraVolumes:
+      - name: tmpdir
+        emptyDir: {}
+
+    priorityClassName: system-cluster-critical
+
+    resources:
+      requests:
+        cpu: 10m
+        memory: 30Mi
