@@ -46,3 +46,9 @@ spec:
       requests:
         cpu: 10m
         memory: 30Mi
+
+    containerSecurityContext:
+      readOnlyRootFilesystem: true
+      allowPrivilegeEscalation: false
+      capabilities:
+        drop: ["ALL"]
