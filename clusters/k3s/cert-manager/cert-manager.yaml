@@ -18,7 +18,7 @@ spec:
         namespace: flux-system
       interval: 1m
   values:
-    installCRDs: false
+    installCRDs: true
     extraArgs:
       - --dns01-recursive-nameservers-only
       - --dns01-recursive-nameservers=1.1.1.1:53
