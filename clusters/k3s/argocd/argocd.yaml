@@ -20,6 +20,8 @@ spec:
   values:
     installCRDs: false
     server:
+      extraArgs:
+        - --insecure
       ingress:
         enabled: true
         annotations:
