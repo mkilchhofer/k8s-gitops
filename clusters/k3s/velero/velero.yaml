@@ -47,9 +47,6 @@ spec:
       runAsNonRoot: true
       runAsGroup: 65534
       runAsUser: 65534
-      allowPrivilegeEscalation: false
-      capabilities:
-        drop: ["ALL"]
     deployRestic: true
     installCRDs: true
     restic:
