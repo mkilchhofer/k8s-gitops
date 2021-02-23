@@ -52,6 +52,12 @@ spec:
       capabilities:
         drop: ["ALL"]
       readOnlyRootFilesystem: true
+    extraVolumeMounts:
+      - mountPath: /tmp
+        name: tmpdir
+    extraVolumes:
+      - name: tmpdir
+        emptyDir: {}
     deployRestic: true
     installCRDs: true
     restic:
