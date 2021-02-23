@@ -19,16 +19,17 @@ spec:
       interval: 1m
   values:
     installCRDs: false
-    ingress:
-      enabled: true
-      annotations:
-        kubernetes.io/ingress.class: contour
-        ingress.kubernetes.io/force-ssl-redirect: "true"
-        cert-manager.io/cluster-issuer: letsencrypt
-      hosts: ["argocd.tools.kilchhofer.info"]
-      tls:
-        - secretName: argocd-tls
-          hosts: ["argocd.tools.kilchhofer.info"]
+    server:
+      ingress:
+        enabled: true
+        annotations:
+          kubernetes.io/ingress.class: contour
+          ingress.kubernetes.io/force-ssl-redirect: "true"
+          cert-manager.io/cluster-issuer: letsencrypt
+        hosts: ["argocd.tools.kilchhofer.info"]
+        tls:
+          - secretName: argocd-tls
+            hosts: ["argocd.tools.kilchhofer.info"]
   valuesFrom:
   - kind: Secret
     name: "argocd-values"
