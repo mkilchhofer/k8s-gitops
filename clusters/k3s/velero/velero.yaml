@@ -37,6 +37,12 @@ spec:
       volumeMounts:
       - mountPath: /target
         name: plugins
+      securityContext:
+        allowPrivilegeEscalation: false
+        capabilities:
+          drop:
+          - ALL
+        readOnlyRootFilesystem: true
     resources:
       requests:
         memory: 300Mi
