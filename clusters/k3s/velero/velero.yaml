@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: velero
-      version: 2.14.8-0.containerSecurityContext
+      version: 2.14.8-1.containerSecurityContext
       sourceRef:
         kind: HelmRepository
         name: chartmuseum-local-charts
@@ -52,12 +52,6 @@ spec:
       capabilities:
         drop: ["ALL"]
       readOnlyRootFilesystem: true
-    extraVolumeMounts:
-      - mountPath: /tmp
-        name: tmpdir
-    extraVolumes:
-      - name: tmpdir
-        emptyDir: {}
     deployRestic: true
     installCRDs: true
     restic:
