@@ -49,6 +49,7 @@ spec:
         cpu: 25m
       limits:
         memory: 1500Mi
+        cpu: 1
     securityContext:
       runAsNonRoot: true
       runAsGroup: 65534
