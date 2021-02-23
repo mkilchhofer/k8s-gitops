@@ -19,3 +19,7 @@ spec:
       interval: 1m
   values:
     installCRDs: false
+  valuesFrom:
+  - kind: Secret
+    name: "argocd-values"
+    optional: false

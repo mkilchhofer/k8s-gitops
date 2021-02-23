@@ -1,0 +1,14 @@
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  name: argocd-values
+  namespace: argocd
+spec:
+  encryptedData:
+    values.yaml: AgCuowi85AuC+OSlemsIrcfV2C9xOSaB3DB8OLClK33AkKIhzKvZPK6Qvol0OB9K/QTonk+BariIqoPfg0EhzQ9PrmMIDIxfGXOOacOeY8Gqmx9YoWviMNscMXAKFULBR8A1zPxklkz+akrInMfIext2uTyc6UNzU2npjJOVOLSS57uKammxTtLBwc2peYMUj9qRipGso1KSXeWzqFukjQ1+aK7TwQ1kG8v2tx7aES9xxPWC/QreIRvXuU1citqGCOSXyeHCqEBwaMTlSA+qfuUtTwqVezSnP669OhvbfpSOkQD5YAKIVd9VQCKWUwhs2nrdIwfo9Lw1i614kaskmruGkkIoh08Vp0lnpXqznS7EEU2OJE9lFcWfigXAB0mJ6LUNp2rx9YgkmCPYOLgQhFSIxmdsi9RIWgi26gOz2QsgX6KT7JxOwNlo8onLP1EEdm7Sc717SUfGPK/rZo4cF2M6Hl+TsBP2Wl0XPiLAlZj0XZZkyU2R5sD/SJOQ4btsIN9N4s8cxKggIh9xiV62DJ4ha9cSvrGlVyUZwHenMLUMniiVuUDi8FfAG+JQu5v8/cv1e5z1xB8crrYxl+RC8o3t9X9EZlJ5iCm5E5j3+BJnPLYWT4oaHY/X4rNit2ygdQFbJ/CuxJaXF1MkvEL/tsL95f3iIhwPwKOt7KKfJPfWhJaRuoj+oS0tzqZ8G3IyHtP7Z2hMDJZMKmWFyhp5nAVAXcI+kR6CllpxItfnXtkhAWAh0zcTxny/KccFrjVBP92XO427QLPV9o3yODLIk0yFIV0f8f3ep9yVnrllr0OqRdlPpfEG745OEgA56dmfwKGBURvAck+wjBtoYNsOqsw=
+  template:
+    metadata:
+      name: argocd-values
+      namespace: argocd
+    type: Opaque
+
