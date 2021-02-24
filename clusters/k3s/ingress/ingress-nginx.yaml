@@ -1,0 +1,26 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: ingress-nginx
+  namespace: ingress
+spec:
+  releaseName: ingress-nginx
+  maxHistory: 3
+  interval: 5m
+  install:
+    skipCRDs: true
+  chart:
+    spec:
+      chart: ingress-nginx
+      version: "3.23.0"
+      sourceRef:
+        kind: HelmRepository
+        name: ingress-nginx
+        namespace: flux-system
+      interval: 1m
+  values:
+    controller:
+      ingressClass: nginx-external
+      service:
+        loadBalancerIP: "192.168.93.90"
