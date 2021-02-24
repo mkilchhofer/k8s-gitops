@@ -8,7 +8,7 @@ spec:
     server: 'https://kubernetes.default.svc'
   project: base
   syncPolicy:
-    automated: null
+    automated: {}
   source:
     path: argocd
     repoURL: 'git@github.com:mkilchhofer/k8s-gitops-services.git'
