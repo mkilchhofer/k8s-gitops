@@ -40,6 +40,9 @@ spec:
     providers:
       kubernetesCRD:
         enabled: false
+      kubernetesIngress:
+        publishedService:
+          enabled: true
 
     additionalArguments:
       - "--providers.kubernetesingress.ingressclass=traefik-external"
