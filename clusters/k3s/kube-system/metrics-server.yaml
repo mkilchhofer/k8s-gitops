@@ -26,7 +26,7 @@ spec:
       repository: metrics-server/metrics-server
       tag: v0.4.2
 
-    command: ""
+    command: []
     extraArgs:
       cert-dir: /tmp
       kubelet-preferred-address-types: InternalIP,ExternalIP,Hostname
