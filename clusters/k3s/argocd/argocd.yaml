@@ -51,6 +51,7 @@ spec:
       additionalProjects:
         - name: base
           namespace: argocd
+          description: Projects provisioned together with Argo CD (infra deployment)
           clusterResourceWhitelist:
           - group: '*'
             kind: '*'
