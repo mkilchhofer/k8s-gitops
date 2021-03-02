@@ -32,6 +32,34 @@ spec:
         tls:
           - secretName: argocd-tls
             hosts: ["argocd.tools.kilchhofer.info"]
+
+      additionalApplications:
+        - name: base
+          namespace: argocd
+          destination:
+            server: 'https://kubernetes.default.svc'
+          project: base
+          syncPolicy:
+            automated: {}
+          source:
+            path: argocd
+            repoURL: 'git@github.com:mkilchhofer/k8s-gitops-services.git'
+            targetRevision: main
+            directory:
+              recurse: true
+
+      additionalProjects:
+        - name: base
+          namespace: argocd
+          clusterResourceWhitelist:
+          - group: '*'
+            kind: '*'
+          destinations:
+          - namespace: '*'
+            server: '*'
+          sourceRepos:
+          - '*'
+
   valuesFrom:
   - kind: Secret
     name: "argocd-values"
