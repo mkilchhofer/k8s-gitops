@@ -38,7 +38,7 @@ spec:
             hosts: ["argocd.tools.kilchhofer.info"]
 
       additionalApplications:
-        - name: base
+        - name: k8s-gitops-services
           namespace: argocd
           destination:
             server: 'https://kubernetes.default.svc'
