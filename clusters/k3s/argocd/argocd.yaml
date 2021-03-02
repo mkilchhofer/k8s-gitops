@@ -37,6 +37,9 @@ spec:
           - secretName: argocd-tls
             hosts: ["argocd.tools.kilchhofer.info"]
 
+      config:
+        url: https://argocd.tools.kilchhofer.info
+
       additionalApplications:
         - name: k8s-gitops-services
           namespace: argocd
