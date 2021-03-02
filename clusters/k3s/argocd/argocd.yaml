@@ -19,6 +19,10 @@ spec:
       interval: 1m
   values:
     installCRDs: false
+
+    controller:
+      enableStatefulSet: true
+
     server:
       extraArgs:
         - --insecure
