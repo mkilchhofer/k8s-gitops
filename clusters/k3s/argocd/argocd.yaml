@@ -23,6 +23,9 @@ spec:
     controller:
       enableStatefulSet: true
 
+    dex:
+      enabled: false
+
     server:
       extraArgs:
         - --insecure
