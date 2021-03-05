@@ -5,6 +5,9 @@ metadata:
   name: rancher
   namespace: cattle-system
 spec:
+  dependsOn:
+    - name: cert-manager
+      namespace: cert-manager
   releaseName: rancher
   maxHistory: 3
   interval: 5m
