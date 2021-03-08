@@ -26,6 +26,8 @@ spec:
         allowPrivilegeEscalation: false
         capabilities:
           drop: ["ALL"]
+        readOnlyRootFilesystem: true
+        runAsNonRoot: true
       resources:
         limits:
           cpu: 1
@@ -42,6 +44,8 @@ spec:
         allowPrivilegeEscalation: false
         capabilities:
           drop: ["ALL"]
+        readOnlyRootFilesystem: true
+        runAsNonRoot: true
       resources:
         limits:
           cpu: 500m
@@ -55,6 +59,8 @@ spec:
         allowPrivilegeEscalation: false
         capabilities:
           drop: ["ALL"]
+        readOnlyRootFilesystem: true
+        runAsNonRoot: true
       resources:
         limits:
           cpu: 500m
@@ -70,6 +76,8 @@ spec:
         allowPrivilegeEscalation: false
         capabilities:
           drop: ["ALL"]
+        readOnlyRootFilesystem: true
+        runAsNonRoot: true
       ingress:
         enabled: true
         annotations:
