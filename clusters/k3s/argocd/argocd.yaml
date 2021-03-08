@@ -71,9 +71,13 @@ spec:
       volumeMounts:
         - mountPath: /app/config/gpg/keys
           name: gpg-keys
+        - mountPath: /tmp
+          name: tmp
       volumes:
         - emptyDir: {}
           name: gpg-keys
+        - emptyDir: {}
+          name: tmp
 
     server:
       extraArgs:
