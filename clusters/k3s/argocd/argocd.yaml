@@ -26,6 +26,13 @@ spec:
         allowPrivilegeEscalation: false
         capabilities:
           drop: ["ALL"]
+      resources:
+        limits:
+          cpu: 1
+          memory: 512Mi
+        requests:
+          cpu: 50m
+          memory: 128Mi
 
     dex:
       enabled: false
@@ -35,12 +42,26 @@ spec:
         allowPrivilegeEscalation: false
         capabilities:
           drop: ["ALL"]
+      resources:
+        limits:
+          cpu: 500m
+          memory: 256Mi
+        requests:
+          cpu: 50m
+          memory: 64Mi
 
     repoServer:
       containerSecurityContext:
         allowPrivilegeEscalation: false
         capabilities:
           drop: ["ALL"]
+      resources:
+        limits:
+          cpu: 500m
+          memory: 128Mi
+        requests:
+          cpu: 50m
+          memory: 64Mi
 
     server:
       extraArgs:
@@ -59,6 +80,13 @@ spec:
         tls:
           - secretName: argocd-tls
             hosts: ["argocd.tools.kilchhofer.info"]
+      resources:
+        limits:
+          cpu: 500m
+          memory: 128Mi
+        requests:
+          cpu: 50m
+          memory: 64Mi
 
       config:
         url: https://argocd.tools.kilchhofer.info
