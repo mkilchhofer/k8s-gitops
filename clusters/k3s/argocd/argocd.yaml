@@ -22,13 +22,33 @@ spec:
 
     controller:
       enableStatefulSet: true
+      containerSecurityContext:
+        allowPrivilegeEscalation: false
+        capabilities:
+          drop: ["ALL"]
 
     dex:
       enabled: false
 
+    redis:
+      containerSecurityContext:
+        allowPrivilegeEscalation: false
+        capabilities:
+          drop: ["ALL"]
+
+    repoServer:
+      containerSecurityContext:
+        allowPrivilegeEscalation: false
+        capabilities:
+          drop: ["ALL"]
+
     server:
       extraArgs:
         - --insecure
+      containerSecurityContext:
+        allowPrivilegeEscalation: false
+        capabilities:
+          drop: ["ALL"]
       ingress:
         enabled: true
         annotations:
