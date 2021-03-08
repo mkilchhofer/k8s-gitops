@@ -11,10 +11,10 @@ spec:
   chart:
     spec:
       chart: argo-cd
-      version: "2.14.7"
+      version: "2.15.0-1.readOnlyRootFilesystem"
       sourceRef:
         kind: HelmRepository
-        name: argo
+        name: chartmuseum-local-charts
         namespace: flux-system
       interval: 1m
   values:
@@ -68,16 +68,6 @@ spec:
         requests:
           cpu: 50m
           memory: 64Mi
-      volumeMounts:
-        - mountPath: /app/config/gpg/keys
-          name: gpg-keys
-        - mountPath: /tmp
-          name: tmp
-      volumes:
-        - emptyDir: {}
-          name: gpg-keys
-        - emptyDir: {}
-          name: tmp
 
     server:
       extraArgs:
