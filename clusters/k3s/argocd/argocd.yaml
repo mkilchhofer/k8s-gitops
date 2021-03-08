@@ -68,6 +68,12 @@ spec:
         requests:
           cpu: 50m
           memory: 64Mi
+      volumeMounts:
+        - mountPath: /app/config/gpg/keys
+          name: gpg-keys
+      volumes:
+        - emptyDir: {}
+          name: gpg-keys
 
     server:
       extraArgs:
