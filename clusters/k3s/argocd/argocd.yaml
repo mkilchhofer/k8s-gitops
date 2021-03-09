@@ -38,6 +38,8 @@ spec:
 
     dex:
       enabled: true
+      image:
+        tag: v2.27.0
       containerSecurityContext:
         allowPrivilegeEscalation: false
         capabilities:
