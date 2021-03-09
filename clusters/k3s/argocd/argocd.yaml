@@ -98,6 +98,18 @@ spec:
 
       config:
         url: https://argocd.tools.kilchhofer.info
+
+        dex.config: |
+          connectors:
+            - type: github
+              id: github
+              name: GitHub
+              config:
+                clientID: 2625bec97ece33a21f1b
+                clientSecret: $dex.github.clientSecret
+                orgs:
+                - name: kilchhofer-home
+
         repositories: |
           - name: services-testing
             sshPrivateKeySecret:
