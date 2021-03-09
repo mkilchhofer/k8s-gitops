@@ -53,6 +53,13 @@ spec:
           cpu: 10m
           memory: 32Mi
 
+      volumeMounts:
+        - mountPath: /tmp
+          name: tmp
+      volumes:
+        - emptyDir: {}
+          name: tmp
+
     redis:
       containerSecurityContext:
         allowPrivilegeEscalation: false
