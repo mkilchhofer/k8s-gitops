@@ -38,6 +38,20 @@ spec:
 
     dex:
       enabled: true
+      containerSecurityContext:
+        allowPrivilegeEscalation: false
+        capabilities:
+          drop: ["ALL"]
+        readOnlyRootFilesystem: true
+        runAsNonRoot: true
+
+      resources:
+        limits:
+          cpu: 10m
+          memory: 128Mi
+        requests:
+          cpu: 10m
+          memory: 32Mi
 
     redis:
       containerSecurityContext:
