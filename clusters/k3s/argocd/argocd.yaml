@@ -54,9 +54,13 @@ spec:
           memory: 32Mi
 
       volumeMounts:
+        - mountPath: /shared
+          name: static-files
         - mountPath: /tmp
           name: tmp
       volumes:
+        - emptyDir: {}
+          name: static-files
         - emptyDir: {}
           name: tmp
 
