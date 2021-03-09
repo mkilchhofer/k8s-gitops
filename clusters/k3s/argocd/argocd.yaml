@@ -37,7 +37,7 @@ spec:
           memory: 128Mi
 
     dex:
-      enabled: false
+      enabled: true
 
     redis:
       containerSecurityContext:
