@@ -39,6 +39,7 @@ spec:
     dex:
       enabled: true
       image:
+        repository: ghcr.io/dexidp/dex
         tag: v2.27.0
       containerSecurityContext:
         allowPrivilegeEscalation: false
