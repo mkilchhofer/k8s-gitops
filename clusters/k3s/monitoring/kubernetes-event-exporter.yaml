@@ -21,6 +21,13 @@ spec:
     image:
       repository: opsgenie/kubernetes-event-exporter
       tag: 0.9
+    resources:
+      limits:
+        cpu: 100m
+        memory: 250Mi
+      requests:
+        cpu: 10m
+        memory: 25Mi
     config:
       logLevel: warn
       logFormat: pretty
