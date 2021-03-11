@@ -56,9 +56,6 @@ spec:
 
     promtail:
       volumes:
-      - name: docker
-        hostPath:
-          path: /var/lib/docker/containers
       - name: pods
         hostPath:
           path: /var/log/pods
@@ -66,9 +63,6 @@ spec:
         hostPath:
           path: /var/lib/promtail
       volumeMounts:
-      - name: docker
-        mountPath: /var/lib/docker/containers
-        readOnly: true
       - name: pods
         mountPath: /var/log/pods
         readOnly: true
@@ -77,6 +71,8 @@ spec:
       config:
         positions:
           filename: /var/lib/promtail/positions.yaml
+      pipelineStages:
+      - cri: {}
   valuesFrom:
   - kind: Secret
     name: loki-stack-values
