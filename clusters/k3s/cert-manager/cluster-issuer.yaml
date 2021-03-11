@@ -34,7 +34,7 @@ spec:
         - "cloud.kilchhofer.info"
       http01:
         ingress:
-          class: traefik-external
+          class: nginx-external
 ---
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
@@ -72,4 +72,4 @@ spec:
         - "cloud.kilchhofer.info"
       http01:
         ingress:
-          class: traefik-external
+          class: nginx-external
