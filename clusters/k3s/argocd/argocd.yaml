@@ -102,6 +102,7 @@ spec:
           kubernetes.io/ingress.class: contour
           ingress.kubernetes.io/force-ssl-redirect: "true"
           cert-manager.io/cluster-issuer: letsencrypt
+          projectcontour.io/response-timeout: 120s
         hosts: ["argocd.tools.kilchhofer.info"]
         tls:
           - secretName: argocd-tls
