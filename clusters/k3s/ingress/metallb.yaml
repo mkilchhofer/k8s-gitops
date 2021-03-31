@@ -32,7 +32,7 @@ spec:
     controller:
       image:
         repository: metallb/controller
-        tag: v0.9.5
+        tag: v0.9.6
       resources:
         limits:
           cpu: 100m
@@ -40,7 +40,7 @@ spec:
     speaker:
       image:
         repository: metallb/speaker
-        tag: v0.9.5
+        tag: v0.9.6
       resources:
         limits:
           cpu: 100m
