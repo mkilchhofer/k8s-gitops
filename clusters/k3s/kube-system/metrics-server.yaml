@@ -11,10 +11,10 @@ spec:
   chart:
     spec:
       chart: metrics-server
-      version: "5.8.2-1.bugfix"
+      version: "5.8.2"
       sourceRef:
         kind: HelmRepository
-        name: chartmuseum-local-charts
+        name: bitnami-charts
         namespace: flux-system
       interval: 1m
   values:
