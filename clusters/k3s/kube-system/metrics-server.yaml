@@ -11,7 +11,7 @@ spec:
   chart:
     spec:
       chart: metrics-server
-      version: "5.8.2-0.bugfix"
+      version: "5.8.2-1.bugfix"
       sourceRef:
         kind: HelmRepository
         name: chartmuseum-local-charts
