@@ -17,6 +17,8 @@ spec:
         namespace: flux-system
       interval: 1m
   values:
+    global:
+      imageRegistry: quay.io
     configInline:
       address-pools:
       - name: default
