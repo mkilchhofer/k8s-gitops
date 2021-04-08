@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: velero
-      version: 2.15.0-1.containerSecurityContext
+      version: 2.17.0-1.containerSecurityContext
       sourceRef:
         kind: HelmRepository
         name: chartmuseum-local-charts
