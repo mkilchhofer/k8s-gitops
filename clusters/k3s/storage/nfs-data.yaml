@@ -9,10 +9,10 @@ spec:
   chart:
     spec:
       chart: nfs-subdir-external-provisioner
-      version: "4.0.8-0"
+      version: "4.0.7"
       sourceRef:
         kind: HelmRepository
-        name: chartmuseum-local-charts
+        name: nfs-subdir-provisioner
         namespace: flux-system
       interval: 1m
   values:
@@ -24,7 +24,3 @@ spec:
       defaultClass: true
       name: "nfs-data"
       provisionerName: cluster.local/nfs-data-provisioner
-    labels:
-      kubernetes.kilchhofer.info/foo: foo-label
-      kubernetes.kilchhofer.info/bar: bar-label
-      kubernetes.kilchhofer.info/baz: baz-label
