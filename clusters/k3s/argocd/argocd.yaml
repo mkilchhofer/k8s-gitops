@@ -193,4 +193,9 @@ spec:
   valuesFrom:
   - kind: Secret
     name: "argocd-values"
-    optional: false
+    valuesKey: argocdServerAdminPassword
+    targetPath: configs.secret.argocdServerAdminPassword
+  - kind: Secret
+    name: "argocd-values"
+    valuesKey: dexGithubClientSecret
+    targetPath: configs.secret.extra."dex\.github\.clientSecret"
