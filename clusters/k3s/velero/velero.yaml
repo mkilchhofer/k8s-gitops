@@ -30,6 +30,8 @@ spec:
         config:
           region: minio
       resticTimeout: 6h
+    credentials:
+      useSecret: true
     initContainers:
     - name: velero-plugin-for-aws
       image: velero/velero-plugin-for-aws:v1.1.0
@@ -76,4 +78,5 @@ spec:
   valuesFrom:
   - kind: Secret
     name: "velero-values"
-    optional: false
+    valuesKey: secretContents_cloud
+    targetPath: credentials.secretContents.cloud
