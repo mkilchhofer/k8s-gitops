@@ -73,6 +73,13 @@ spec:
           filename: /var/lib/promtail/positions.yaml
       pipelineStages:
       - cri: {}
+
   valuesFrom:
   - kind: Secret
     name: loki-stack-values
+    valuesKey: access_key_id
+    targetPath: loki.config.storage_config.aws.access_key_id
+  - kind: Secret
+    name: loki-stack-values
+    valuesKey: secret_access_key
+    targetPath: loki.config.storage_config.aws.secret_access_key
