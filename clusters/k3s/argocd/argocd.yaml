@@ -198,4 +198,4 @@ spec:
   - kind: Secret
     name: "argocd-values"
     valuesKey: dexGithubClientSecret
-    targetPath: configs.secret.extra."dex\.github\.clientSecret"
+    targetPath: configs.secret.extra.dex\.github\.clientSecret
