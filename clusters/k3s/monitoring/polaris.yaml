@@ -10,7 +10,7 @@ spec:
   chart:
     spec:
       chart: polaris
-      version: "3.0.2"
+      version: "4.0.2"
       sourceRef:
         kind: HelmRepository
         name: fairwinds-charts
@@ -32,7 +32,7 @@ spec:
             secretName: polaris-cert
 
     image:
-      tag: "3.1.5"
+      tag: "4.0.2"
 
     config:
       checks:
@@ -43,6 +43,10 @@ spec:
         pullPolicyNotAlways: ignore
         readinessProbeMissing: warning
         livenessProbeMissing: warning
+        metadataAndNameMismatched: ignore
+        pdbDisruptionsIsZero: warning
+        missingPodDisruptionBudget: ignore
+
         # efficiency
         cpuRequestsMissing: warning
         cpuLimitsMissing: warning
