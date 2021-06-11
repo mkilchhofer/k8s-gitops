@@ -20,6 +20,10 @@ spec:
   values:
     installCRDs: false
 
+    global:
+      networkPolicy:
+        create: true
+
     controller:
       enableStatefulSet: true
       containerSecurityContext:
