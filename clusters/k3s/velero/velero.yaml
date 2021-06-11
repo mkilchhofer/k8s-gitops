@@ -9,10 +9,10 @@ spec:
   chart:
     spec:
       chart: velero
-      version: 2.17.0-1.containerSecurityContext
+      version: 2.22.0
       sourceRef:
         kind: HelmRepository
-        name: chartmuseum-local-charts
+        name: vmware-tanzu-charts
         namespace: flux-system
       interval: 5m
   values:
