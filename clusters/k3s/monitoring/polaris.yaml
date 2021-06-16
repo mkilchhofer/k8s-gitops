@@ -19,7 +19,7 @@ spec:
   values:
     dashboard:
       ingress:
-        enabled: true
+        enabled: false
         hosts:
           - polaris.tools.kilchhofer.info
         annotations:
