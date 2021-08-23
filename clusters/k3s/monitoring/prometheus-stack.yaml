@@ -46,6 +46,13 @@ spec:
 
     prometheus:
       prometheusSpec:
+        resources:
+          requests:
+            cpu: 50m
+            memory: 512Mi
+          limits:
+            cpu: 1
+            memory: 1Gi
         storageSpec:
           volumeClaimTemplate:
             spec:
