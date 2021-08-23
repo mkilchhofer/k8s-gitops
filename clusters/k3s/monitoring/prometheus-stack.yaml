@@ -46,6 +46,7 @@ spec:
 
     prometheus:
       prometheusSpec:
+        serviceMonitorSelectorNilUsesHelmValues: false
         resources:
           requests:
             cpu: 50m
