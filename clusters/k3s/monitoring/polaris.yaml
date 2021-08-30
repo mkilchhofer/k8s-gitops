@@ -4,13 +4,12 @@ metadata:
   name: polaris
   namespace: monitoring
 spec:
-  releaseName: polaris
   maxHistory: 3
   interval: 5m
   chart:
     spec:
       chart: polaris
-      version: "4.0.2"
+      version: "4.0.7"
       sourceRef:
         kind: HelmRepository
         name: fairwinds-charts
@@ -32,7 +31,7 @@ spec:
             secretName: polaris-cert
 
     image:
-      tag: "4.0.2"
+      tag: "4.0.8"
 
     config:
       checks:
