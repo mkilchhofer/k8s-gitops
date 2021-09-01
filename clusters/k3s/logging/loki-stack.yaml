@@ -35,7 +35,7 @@ spec:
       config:
         schema_config:
           configs:
-            - from: 2020-11-13
+            - from: "2020-11-13"
               store: boltdb-shipper
               object_store: aws
               schema: v11
