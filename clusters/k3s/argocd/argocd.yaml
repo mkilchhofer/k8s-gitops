@@ -11,7 +11,7 @@ spec:
   chart:
     spec:
       chart: argo-cd
-      version: "3.20.0"
+      version: "3.22.0"
       sourceRef:
         kind: HelmRepository
         name: argo
@@ -192,6 +192,9 @@ spec:
             targetRevision: main
             directory:
               recurse: true
+          info:
+            - name: Owner
+              value: https://github.com/mkilchhofer/
 
       additionalProjects:
         - name: base
