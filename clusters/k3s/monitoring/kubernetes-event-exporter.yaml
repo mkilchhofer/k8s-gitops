@@ -11,7 +11,7 @@ spec:
   chart:
     spec:
       chart: kubernetes-event-exporter
-      version: "1.0.3"
+      version: "1.1.15"
       sourceRef:
         kind: HelmRepository
         name: bitnami-charts
@@ -19,8 +19,8 @@ spec:
       interval: 1m
   values:
     image:
-      repository: opsgenie/kubernetes-event-exporter
-      tag: 0.9
+      repository: ghcr.io/opsgenie/kubernetes-event-exporter
+      tag: v0.10
     resources:
       limits:
         cpu: 100m
