@@ -134,9 +134,15 @@ spec:
       volumes:
         - name: custom-tools
           emptyDir: {}
+        - name: gpg-private-keys
+          secret:
+            secretName: gpg-private-keys
+            optional: true
       volumeMounts:
         - mountPath: /custom-tools
           name: custom-tools
+        - mountPath: /gpg-private-keys/
+          name: gpg-private-keys
 
       initContainers:
         - name: download-tools
