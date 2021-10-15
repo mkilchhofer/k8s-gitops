@@ -111,6 +111,19 @@ spec:
           cpu: 50m
           memory: 64Mi
 
+      serviceAccount:
+        create: true
+
+      rbac:
+      - apiGroups:
+        - ""
+        resources:
+        - secrets
+        verbs:
+        - get
+        - list
+        - watch
+
       env:
         - name: HELM_PLUGINS
           value: /custom-tools/helm-plugins/
