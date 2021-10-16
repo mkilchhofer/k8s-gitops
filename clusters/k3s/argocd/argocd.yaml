@@ -99,7 +99,7 @@ spec:
         runAsNonRoot: true
       image:
         repository: ghcr.io/mkilchhofer/argocd-helm-secrets
-        tag: v2.1.3-helm-secrets.2
+        tag: v2.1.3-helm-secrets.3
 
       metrics:
         enabled: true
