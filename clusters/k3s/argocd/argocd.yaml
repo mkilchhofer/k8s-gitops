@@ -73,6 +73,8 @@ spec:
 
       livenessProbe:
         enabled: true
+        initialDelaySeconds: 60
+        periodSeconds: 30
       readinessProbe:
         enabled: true
 
