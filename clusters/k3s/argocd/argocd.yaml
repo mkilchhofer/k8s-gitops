@@ -71,6 +71,11 @@ spec:
           cpu: 10m
           memory: 32Mi
 
+      livenessProbe:
+        enabled: true
+      readinessProbe:
+        enabled: true
+
     redis:
       containerSecurityContext:
         allowPrivilegeEscalation: false
