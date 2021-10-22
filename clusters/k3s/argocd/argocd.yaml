@@ -183,6 +183,7 @@ spec:
         - name: k8s-gitops-services
           namespace: argocd
           destination:
+            namespace: argocd
             server: 'https://kubernetes.default.svc'
           project: base
           syncPolicy:
@@ -201,11 +202,14 @@ spec:
         - name: base
           namespace: argocd
           description: Projects provisioned together with Argo CD (infra deployment)
-          clusterResourceWhitelist:
+          clusterResourceBlacklist:
           - group: '*'
             kind: '*'
+          namespaceResourceWhitelist:
+          - group: 'argoproj.io'
+            kind: 'Application'
           destinations:
-          - namespace: '*'
+          - namespace: argocd
             server: 'https://kubernetes.default.svc'
           sourceRepos:
           - '*'
