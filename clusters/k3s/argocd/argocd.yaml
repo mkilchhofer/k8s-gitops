@@ -202,6 +202,8 @@ spec:
         - name: base
           namespace: argocd
           description: Projects provisioned together with Argo CD (infra deployment)
+          finalizers:
+          - resources-finalizer.argocd.argoproj.io
           clusterResourceBlacklist:
           - group: '*'
             kind: '*'
@@ -216,6 +218,8 @@ spec:
         - name: apps-restricted
           namespace: argocd
           description: All restricted apps
+          finalizers:
+          - resources-finalizer.argocd.argoproj.io
           # Allow manifests to deploy from any Git repos
           sourceRepos:
           - '*'
@@ -236,6 +240,8 @@ spec:
         - name: apps-with-clusterroles
           namespace: argocd
           description: All apps with ClusterRoles and ClusterRoleBindings
+          finalizers:
+          - resources-finalizer.argocd.argoproj.io
           # Allow manifests to deploy from any Git repos
           sourceRepos:
           - '*'
