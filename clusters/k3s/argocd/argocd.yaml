@@ -48,33 +48,7 @@ spec:
           memory: 128Mi
 
     dex:
-      enabled: true
-      containerSecurityContext:
-        allowPrivilegeEscalation: false
-        capabilities:
-          drop: ["ALL"]
-        readOnlyRootFilesystem: true
-        runAsNonRoot: true
-
-      metrics:
-        enabled: true
-        serviceMonitor:
-          enabled: true
-
-      resources:
-        limits:
-          cpu: 10m
-          memory: 128Mi
-        requests:
-          cpu: 10m
-          memory: 32Mi
-
-      livenessProbe:
-        enabled: true
-        initialDelaySeconds: 60
-        periodSeconds: 30
-      readinessProbe:
-        enabled: true
+      enabled: false
 
     redis:
       containerSecurityContext:
@@ -180,16 +154,11 @@ spec:
       config:
         url: https://argocd.tools.kilchhofer.info
 
-        dex.config: |
-          connectors:
-            - type: github
-              id: github
-              name: GitHub
-              config:
-                clientID: 2625bec97ece33a21f1b
-                clientSecret: $dex.github.clientSecret
-                orgs:
-                - name: kilchhofer-home
+        oidc.config: |
+          name: Dex
+          issuer: https://auth.tools.kilchhofer.info/dex
+          clientID: argocd
+          clientSecret: $oidc.dex.clientSecret
 
         repositories: |
           - name: services-testing
@@ -262,4 +231,4 @@ spec:
   - kind: Secret
     name: "argocd-values"
     valuesKey: dexGithubClientSecret
-    targetPath: configs.secret.extra.dex\.github\.clientSecret
+    targetPath: configs.secret.extra.oidc\.dex\.clientSecret
