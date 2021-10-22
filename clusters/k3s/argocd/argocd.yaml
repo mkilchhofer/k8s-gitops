@@ -209,6 +209,50 @@ spec:
             server: 'https://kubernetes.default.svc'
           sourceRepos:
           - '*'
+        - name: apps-restricted
+          namespace: argocd
+          description: All restricted apps
+          # Allow manifests to deploy from any Git repos
+          sourceRepos:
+          - '*'
+          # Only permit applications to deploy to the guestbook namespace in the same cluster
+          destinations:
+          - namespace: '*'
+            server: https://kubernetes.default.svc
+          # Deny all cluster-scoped resources from being created, except for Namespace
+          clusterResourceWhitelist:
+          - group: ''
+            kind: Namespace
+          # Allow all namespaced-scoped resources to be created, except for ResourceQuota, LimitRange
+          namespaceResourceBlacklist:
+          - group: ''
+            kind: ResourceQuota
+          - group: ''
+            kind: LimitRange
+        - name: apps-with-clusterroles
+          namespace: argocd
+          description: All apps with ClusterRoles and ClusterRoleBindings
+          # Allow manifests to deploy from any Git repos
+          sourceRepos:
+          - '*'
+          # Only permit applications to deploy to the guestbook namespace in the same cluster
+          destinations:
+          - namespace: '*'
+            server: https://kubernetes.default.svc
+          # Deny all cluster-scoped resources from being created, except for Namespace
+          clusterResourceWhitelist:
+          - group: ''
+            kind: Namespace
+          - group: 'rbac.authorization.k8s.io'
+            kind: ClusterRoleBinding
+          - group: 'rbac.authorization.k8s.io'
+            kind: ClusterRole
+          # Allow all namespaced-scoped resources to be created, except for ResourceQuota, LimitRange
+          namespaceResourceBlacklist:
+          - group: ''
+            kind: ResourceQuota
+          - group: ''
+            kind: LimitRange
 
     configs:
       knownHosts:
