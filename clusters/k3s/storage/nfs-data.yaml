@@ -18,10 +18,21 @@ spec:
   values:
     image:
       tag: v4.0.2
+
     nameOverride: nfs-data-provisioner
+
     nfs:
       server: "nfs-data.ma.kilchhofer.info"
       path: "/volume1/kubernetes/nfs-data"
+
+    resources:
+      limits:
+        cpu: 100m
+        memory: 128Mi
+      requests:
+        cpu: 10m
+        memory: 16Mi
+
     storageClass:
       defaultClass: true
       name: "nfs-data"
