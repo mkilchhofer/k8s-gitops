@@ -19,6 +19,7 @@ spec:
       interval: 1m
   values:
     installCRDs: false
+    createAggregateRoles: true
 
     global:
       networkPolicy:
