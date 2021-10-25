@@ -60,6 +60,13 @@ spec:
 
       metrics:
         enabled: true
+        resources:
+          limits:
+            cpu: 100m
+            memory: 128Mi
+          requests:
+            cpu: 5m
+            memory: 16Mi
         serviceMonitor:
           enabled: true
 
