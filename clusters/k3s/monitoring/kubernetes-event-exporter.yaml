@@ -11,10 +11,10 @@ spec:
   chart:
     spec:
       chart: kubernetes-event-exporter
-      version: "1.1.15"
+      version: "1.2.0-leaderelection.2"
       sourceRef:
         kind: HelmRepository
-        name: bitnami-charts
+        name: chartmuseum-local-charts
         namespace: flux-system
       interval: 1m
   values:
@@ -22,6 +22,7 @@ spec:
       registry: ghcr.io
       repository: opsgenie/kubernetes-event-exporter
       tag: v0.10
+    replicaCount: 2
     resources:
       limits:
         cpu: 100m
@@ -34,8 +35,7 @@ spec:
       logFormat: pretty
       receivers:
         - name: "dump"
-          file:
-            path: "/dev/stdout"
+          stdout:
             layout:
               message: "{{ .Message }}"
               reason: "{{ .Reason }}"
