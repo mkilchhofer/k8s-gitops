@@ -11,10 +11,10 @@ spec:
   chart:
     spec:
       chart: kubernetes-event-exporter
-      version: "1.2.0-leaderelection.2"
+      version: "1.2.0"
       sourceRef:
         kind: HelmRepository
-        name: chartmuseum-local-charts
+        name: bitnami-charts
         namespace: flux-system
       interval: 1m
   values:
