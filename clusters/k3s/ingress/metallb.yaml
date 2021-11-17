@@ -4,7 +4,6 @@ metadata:
   name: metallb
   namespace: ingress
 spec:
-  releaseName: metallb-system
   maxHistory: 3
   interval: 5m
   chart:
