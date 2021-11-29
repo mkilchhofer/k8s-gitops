@@ -169,6 +169,7 @@ spec:
       config:
         url: https://argocd.tools.kilchhofer.info
 
+        admin.enabled: "false"
         oidc.config: |
           name: Dex
           issuer: https://auth.tools.kilchhofer.info/dex
