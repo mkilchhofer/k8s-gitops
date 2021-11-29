@@ -146,6 +146,13 @@ spec:
           - secretName: argocd-tls
             hosts: ["argocd.tools.kilchhofer.info"]
 
+      volumes:
+        - emptyDir: {}
+          name: home
+      volumeMounts:
+        - mountPath: /home/argocd
+          name: home
+
       metrics:
         enabled: true
         serviceMonitor:
