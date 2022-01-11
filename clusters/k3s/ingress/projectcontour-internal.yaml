@@ -10,7 +10,7 @@ spec:
   chart:
     spec:
       chart: contour
-      version: "4.1.1"
+      version: "6.0.0"
       sourceRef:
         kind: HelmRepository
         name: bitnami-charts
@@ -19,8 +19,9 @@ spec:
   values:
     envoy:
       image:
+        registry: docker.io
         repository: envoyproxy/envoy
-        tag: v1.16.2
+        tag: v1.19.0
       useHostPort: false
       containerPorts:
         http: 8080
@@ -31,8 +32,9 @@ spec:
         runAsUser: 1001
     contour:
       image:
+        registry: ghcr.io
         repository: projectcontour/contour
-        tag: v1.11.0
+        tag: v1.19.0
 
     prometheus:
       serviceMonitor:
