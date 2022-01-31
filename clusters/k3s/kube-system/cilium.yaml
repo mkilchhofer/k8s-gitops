@@ -47,3 +47,7 @@ spec:
             group: cert-manager.io
             kind: ClusterIssuer
             name: ca-issuer
+    prometheus:
+      enabled: true
+      serviceMonitor:
+        enabled: true
