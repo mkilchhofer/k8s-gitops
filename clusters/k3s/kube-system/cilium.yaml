@@ -31,6 +31,10 @@ spec:
     operator:
       replicas: 1
       rollOutPods: true
+      prometheus:
+        enabled: true
+        serviceMonitor:
+          enabled: true
     ipam:
       mode: kubernetes
     hubble:
