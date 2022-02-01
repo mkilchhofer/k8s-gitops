@@ -43,6 +43,21 @@ spec:
           drop: ["ALL"]
         readOnlyRootFilesystem: true
         runAsNonRoot: true
+      resources:
+        limits:
+          cpu: 1000m
+          memory: 512Mi
+        requests:
+          cpu: 10m
+          memory: 32Mi
+
+    resources:
+      limits:
+        cpu: 1000m
+        memory: 512Mi
+      requests:
+        cpu: 10m
+        memory: 32Mi
 
     webhook:
       containerSecurityContext:
@@ -51,3 +66,10 @@ spec:
           drop: ["ALL"]
         readOnlyRootFilesystem: true
         runAsNonRoot: true
+      resources:
+        limits:
+          cpu: 1000m
+          memory: 512Mi
+        requests:
+          cpu: 10m
+          memory: 32Mi
