@@ -11,12 +11,16 @@ spec:
   chart:
     spec:
       chart: argo-cd
-      version: "3.33.2-2.refactor"
+      version: "4.0.0-1"
       sourceRef:
         kind: HelmRepository
         name: chartmuseum-local-charts
         namespace: flux-system
       interval: 1m
+  install:
+    crds: CreateReplace
+  upgrade:
+    crds: CreateReplace
   values:
     installCRDs: false
     createAggregateRoles: true
@@ -90,7 +94,7 @@ spec:
         runAsNonRoot: true
       image:
         repository: ghcr.io/mkilchhofer/argocd-helm-secrets
-        tag: v2.2.3-helm-secrets.1
+        tag: v2.3.1-helm-secrets.1
 
       metrics:
         enabled: true
@@ -148,13 +152,6 @@ spec:
           - secretName: argocd-tls
             hosts: ["argocd.tools.kilchhofer.info"]
 
-      volumes:
-        - emptyDir: {}
-          name: home
-      volumeMounts:
-        - mountPath: /home/argocd
-          name: home
-
       metrics:
         enabled: true
         serviceMonitor:
@@ -170,6 +167,8 @@ spec:
 
       config:
         url: https://argocd.tools.kilchhofer.info
+
+        helm.valuesFileSchemes: http, https, secrets+gpg-import-kubernetes
 
         admin.enabled: "false"
         oidc.config: |
