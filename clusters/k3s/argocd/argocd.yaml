@@ -177,20 +177,6 @@ spec:
           clientID: argocd
           clientSecret: $oidc.dex.clientSecret
 
-        repositories: |
-          - name: services-testing
-            sshPrivateKeySecret:
-              key: sshPrivateKey
-              name: argocd-private-keys
-            type: git
-            url: git@192.168.93.88:3001/mkilchhofer/k8s-services-testing.git
-          - name: k8s-gitops-services
-            sshPrivateKeySecret:
-              key: sshPrivateKey
-              name: argocd-private-keys
-            type: git
-            url: git@github.com:mkilchhofer/k8s-gitops-services.git
-
       rbacConfig:
         policy.csv: |
           g, kilchhofer-home:admins, role:admin
@@ -282,6 +268,12 @@ spec:
             kind: LimitRange
 
     configs:
+      credentialTemplates:
+        gh-mkilchhofer-ssh:
+          url: git@github.com:mkilchhofer
+        internal-mkilchhofer-ssh:
+          url: git@192.168.93.88:3001/mkilchhofer
+
       knownHosts:
         data:
           ssh_known_hosts: |
@@ -305,3 +297,11 @@ spec:
     name: "argocd-values"
     valuesKey: dexGithubClientSecret
     targetPath: configs.secret.extra.oidc\.dex\.clientSecret
+  - kind: Secret
+    name: "argocd-private-keys"
+    valuesKey: sshPrivateKey
+    targetPath: configs.credentialTemplates.gh-mkilchhofer-ssh.sshPrivateKey
+  - kind: Secret
+    name: "argocd-private-keys"
+    valuesKey: sshPrivateKey
+    targetPath: configs.credentialTemplates.internal-mkilchhofer-ssh.sshPrivateKey
