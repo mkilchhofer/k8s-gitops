@@ -30,6 +30,12 @@ spec:
         create: true
         defaultDenyIngress: true
 
+    applicationSet:
+      metrics:
+        enabled: true
+        serviceMonitor:
+          enabled: true
+
     controller:
       enableStatefulSet: true
       containerSecurityContext:
@@ -54,6 +60,12 @@ spec:
 
     dex:
       enabled: false
+
+    notifications:
+      metrics:
+        enabled: true
+        serviceMonitor:
+          enabled: true
 
     redis:
       containerSecurityContext:
