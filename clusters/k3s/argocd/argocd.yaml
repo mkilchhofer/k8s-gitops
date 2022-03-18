@@ -66,6 +66,10 @@ spec:
         enabled: true
         serviceMonitor:
           enabled: true
+      notifiers:
+        service.slack: ~
+        service.telegram: |
+          token: $telegram-token
 
     redis:
       containerSecurityContext:
@@ -309,6 +313,10 @@ spec:
     name: "argocd-values"
     valuesKey: dexGithubClientSecret
     targetPath: configs.secret.extra.oidc\.dex\.clientSecret
+  - kind: Secret
+    name: "argocd-values"
+    valuesKey: telegramToken
+    targetPath: notifications.secret.items.telegram-token
   - kind: Secret
     name: "argocd-private-keys"
     valuesKey: sshPrivateKey
