@@ -13,7 +13,7 @@ spec:
   chart:
     spec:
       chart: ingress-nginx
-      version: "4.0.13"
+      version: "4.0.18"
       sourceRef:
         kind: HelmRepository
         name: ingress-nginx
@@ -21,6 +21,7 @@ spec:
       interval: 1m
   values:
     controller:
+      ingressClass: nginx-external
       ingressClassResource:
         name: nginx-external
       service:
