@@ -11,10 +11,10 @@ spec:
   chart:
     spec:
       chart: argo-cd
-      version: "4.2.1-2"
+      version: "4.3.1"
       sourceRef:
         kind: HelmRepository
-        name: chartmuseum-local-charts
+        name: argo
         namespace: flux-system
       interval: 1m
   install:
@@ -35,6 +35,13 @@ spec:
         enabled: true
         serviceMonitor:
           enabled: true
+      resources:
+        limits:
+          cpu: 500m
+          memory: 256Mi
+        requests:
+          cpu: 50m
+          memory: 64Mi
 
     controller:
       enableStatefulSet: true
@@ -67,9 +74,15 @@ spec:
         serviceMonitor:
           enabled: true
       notifiers:
-        service.slack: ~
         service.telegram: |
           token: $telegram-token
+      resources:
+        limits:
+          cpu: 500m
+          memory: 256Mi
+        requests:
+          cpu: 50m
+          memory: 64Mi
 
     redis:
       containerSecurityContext:
@@ -110,7 +123,7 @@ spec:
         runAsNonRoot: true
       image:
         repository: ghcr.io/mkilchhofer/argocd-helm-secrets
-        tag: v2.3.1-helm-secrets.1
+        tag: v2.3.3-helm-secrets.1
 
       metrics:
         enabled: true
