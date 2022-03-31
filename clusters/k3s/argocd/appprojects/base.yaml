@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+  name: base
+  namespace: argocd
+spec:
+  clusterResourceBlacklist:
+  - group: '*'
+    kind: '*'
+  description: Projects provisioned together with Argo CD (infra deployment)
+  destinations:
+  - namespace: argocd
+    server: https://kubernetes.default.svc
+  namespaceResourceWhitelist:
+  - group: argoproj.io
+    kind: Application
+  sourceRepos:
+  - '*'
