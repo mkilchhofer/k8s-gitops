@@ -211,25 +211,7 @@ spec:
           g, kilchhofer-home:admins, role:admin
         policy.default: role:readonly
 
-      additionalApplications:
-        - name: k8s-gitops-services
-          namespace: argocd
-          destination:
-            namespace: argocd
-            server: 'https://kubernetes.default.svc'
-          project: base
-          syncPolicy:
-            automated: {}
-          source:
-            path: argocd
-            repoURL: 'git@github.com:mkilchhofer/k8s-gitops-services.git'
-            targetRevision: main
-            directory:
-              recurse: true
-          info:
-            - name: Owner
-              value: https://github.com/mkilchhofer/
-
+      additionalApplications: []
       additionalProjects: []
 
     configs:
