@@ -249,10 +249,10 @@ spec:
     valuesKey: telegramToken
     targetPath: notifications.secret.items.telegram-token
   - kind: Secret
-    name: "argocd-private-keys"
+    name: "argocd-values"
     valuesKey: sshPrivateKey
     targetPath: configs.credentialTemplates.gh-mkilchhofer-ssh.sshPrivateKey
   - kind: Secret
-    name: "argocd-private-keys"
+    name: "argocd-values"
     valuesKey: sshPrivateKey
     targetPath: configs.credentialTemplates.internal-mkilchhofer-ssh.sshPrivateKey
