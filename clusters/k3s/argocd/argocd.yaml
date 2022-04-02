@@ -76,6 +76,13 @@ spec:
       notifiers:
         service.telegram: |
           token: $telegram-token
+      templates:
+        template.app-health-degraded: |
+          email:
+            subject: Application {{.app.metadata.name}} has degraded.
+          message: |
+            Application {{.app.metadata.name}} has degraded.
+            Application details: {{.context.argocdUrl}}/applications/{{.app.metadata.name}}.
       resources:
         limits:
           cpu: 500m
