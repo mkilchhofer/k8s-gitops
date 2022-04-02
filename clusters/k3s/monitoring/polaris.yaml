@@ -225,3 +225,19 @@ spec:
             - kube-hunter
           rules:
             - runAsRootAllowed
+
+        # Cilium exemptions
+        - namespace: kube-system
+          controllerNames:
+            - cilium
+            - cilium-operator
+            - hubble-relay
+            - hubble-ui
+          rules:
+            - notReadOnlyRootFilesystem
+            - insecureCapabilities
+            - privilegeEscalationAllowed
+            - runAsRootAllowed
+            - runAsPrivileged
+            - hostPortSet
+            - hostNetworkSet
