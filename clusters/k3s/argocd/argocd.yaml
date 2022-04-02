@@ -88,6 +88,11 @@ spec:
           message: |
             Application {{.app.metadata.name}} has degraded.
             Application details: {{.context.argocdUrl}}/applications/{{.app.metadata.name}}.
+        template.app-health-suspended: |
+          email:
+            subject: Application {{.app.metadata.name}} is 'Suspended'
+          message: |
+            Application {{.app.metadata.name}} is 'Suspended'.
         template.app-sync-failed: |
           email:
             subject: Failed to sync application {{.app.metadata.name}}.
@@ -129,6 +134,11 @@ spec:
             send:
             - app-health-degraded
             when: app.status.health.status == 'Degraded'
+        trigger.on-health-suspended: |
+          - description: Application status is 'Suspended'
+            send:
+            - app-health-suspended
+            when: app.status.health.status == 'Suspended'
         trigger.on-sync-failed: |
           - description: Application syncing has failed
             send:
