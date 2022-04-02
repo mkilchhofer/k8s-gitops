@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: polaris
-      version: "4.0.7"
+      version: "5.0.0"
       sourceRef:
         kind: HelmRepository
         name: fairwinds-charts
@@ -17,26 +17,14 @@ spec:
       interval: 1m
   values:
     dashboard:
-      ingress:
-        enabled: false
-        hosts:
-          - polaris.tools.kilchhofer.info
-        annotations:
-          kubernetes.io/ingress.class: contour
-          ingress.kubernetes.io/force-ssl-redirect: "true"
-          cert-manager.io/cluster-issuer: letsencrypt
-        tls:
-          - hosts:
-            - polaris.tools.kilchhofer.info
-            secretName: polaris-cert
-
+      replicas: 1
     image:
-      tag: "4.0.8"
+      tag: "5.1.0"
 
     config:
       checks:
         # reliability
-        multipleReplicasForDeployment: ignore
+        deploymentMissingReplicas: ignore
         priorityClassNotSet: ignore
         tagNotSpecified: danger
         pullPolicyNotAlways: ignore
@@ -56,11 +44,11 @@ spec:
         hostPIDSet: danger
         notReadOnlyRootFilesystem: warning
         privilegeEscalationAllowed: danger
-        runAsRootAllowed: warning
+        runAsRootAllowed: danger
         runAsPrivileged: danger
         dangerousCapabilities: danger
         insecureCapabilities: warning
-        hostNetworkSet: warning
+        hostNetworkSet: danger
         hostPortSet: warning
         tlsSettingsMissing: warning
 
