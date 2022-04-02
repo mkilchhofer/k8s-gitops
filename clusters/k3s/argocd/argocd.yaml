@@ -83,6 +83,12 @@ spec:
           message: |
             Application {{.app.metadata.name}} has degraded.
             Application details: {{.context.argocdUrl}}/applications/{{.app.metadata.name}}.
+      triggers:
+        trigger.on-health-degraded: |
+          - description: Application has degraded
+            send:
+            - app-health-degraded
+            when: app.status.health.status == 'Degraded'
       resources:
         limits:
           cpu: 500m
