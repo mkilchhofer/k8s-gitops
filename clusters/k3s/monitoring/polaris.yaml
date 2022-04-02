@@ -241,3 +241,5 @@ spec:
             - runAsPrivileged
             - hostPortSet
             - hostNetworkSet
+            - readinessProbeMissing
+            - livenessProbeMissing
