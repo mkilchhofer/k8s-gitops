@@ -1,0 +1,14 @@
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  name: cilium-creds
+  namespace: kube-system
+spec:
+  encryptedData:
+    dexHubbleClientSecret: AgBNOU6ja0iSNrB4+wJxOtV3VFBhrFRHpZe8+/8/igrjXjawxPVs/6Y7g8u3DCE/tnfdxFv3nN+qdgpqi/65znBy2Qk6Me5nymQAQ+RIlBc80I5D1f1ZmdiHMqXdlXG9otMlV4Nh3tlwpDXIgFygMjrF7/k8LDITrdkCDoR0iE4sZUeCgneWILDP/Ch5gtZtYDt/pAyO0DCPj6THbt7kTOr9FozTcaSYnQQAXZzCCJHrVOqwhvZ5OgDELqr1FXa5ephGS5xS+XKMDMfVqaAWeJRtCCTpThm7vF9ANGKwS6lEwBZtGh33Q3NIk56dCA3Vns39StpH38edp2vONC2ovjp2QEFbdaALyCcQ2LAQycLzLBF9y+5Jhg1JDl3K1Vf0vpPVh5Hm53WjtMVdE+R3IaRb9+3m0EU+Qrq9IignZAPiwqu/U5d8k50TysC0u27JrR5lsgoepF53obvaxHzIt1vAneq2hovmKS+LWCgYHhAUIlCrKl7Jgo/RH7mjSkLjNAVQFe8OmarOqeLdC+DpEYTfWbgZ9SA30btG0e8w1F0WIq+/93Ug7Hz/HrCbJpnotuDbz4uBDKK4ksSp0xcrT5XuxHlEw1lU2A/cywStK89HNoLHNZDXt47jzsKK/lMJ0u4ZQ5fhbXe7IAor6W8ECF1EyIKFBF+NVqPP7ii1FfRh/UZSd7rJXXL+zxdDxNfoXjIxYNVuiG72LeYHjWhLM/HQDScNhvafNxmtx0EXQAnp1/LEv+g9S6yh
+  template:
+    metadata:
+      name: cilium-creds
+      namespace: kube-system
+    type: Opaque
+
