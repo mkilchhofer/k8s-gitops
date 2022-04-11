@@ -28,6 +28,8 @@ spec:
       rbac:
         create: false
         pspEnabled: false
+      loki:
+        serviceName: loki.base-infra
       volumes:
       - name: pods
         hostPath:
