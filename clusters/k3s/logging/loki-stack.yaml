@@ -25,6 +25,9 @@ spec:
         port: 3100
 
     promtail:
+      rbac:
+        create: false
+        pspEnabled: false
       volumes:
       - name: pods
         hostPath:
