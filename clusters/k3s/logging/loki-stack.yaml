@@ -21,6 +21,8 @@ spec:
 
     loki:
       enabled: false
+      service:
+        port: 3100
 
     promtail:
       volumes:
