@@ -302,9 +302,9 @@ spec:
     configs:
       credentialTemplates:
         gh-mkilchhofer-ssh:
-          url: git@github.com:mkilchhofer
+          url: git@github.com:mkilchhofer/
         internal-mkilchhofer-ssh:
-          url: ssh://git@192.168.93.88:3001/mkilchhofer
+          url: ssh://git@192.168.93.88:3001/mkilchhofer/
 
       knownHosts:
         data:
