@@ -263,7 +263,7 @@ spec:
         hosts: ["argocd.tools.kilchhofer.info"]
         ingressClassName: contour
         tls:
-          - secretName: argocd-tls
+          - secretName: argocd-server-tls
             hosts: ["argocd.tools.kilchhofer.info"]
 
       metrics:
