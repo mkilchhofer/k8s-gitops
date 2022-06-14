@@ -291,6 +291,10 @@ spec:
           clientID: argocd
           clientSecret: $oidc.dex.clientSecret
 
+        # Enable exec and RBAC for pod logs
+        server.rbac.log.enforce.enable: "true"
+        exec.enabled: "true"
+
       rbacConfig:
         policy.csv: |
           g, kilchhofer-home:admins, role:admin
