@@ -290,6 +290,10 @@ spec:
           issuer: https://auth.tools.kilchhofer.info/dex
           clientID: argocd
           clientSecret: $oidc.dex.clientSecret
+          requestedScopes:
+          - openid
+          - email
+          - groups
 
         # Enable exec and RBAC for pod logs
         server.rbac.log.enforce.enable: "true"
