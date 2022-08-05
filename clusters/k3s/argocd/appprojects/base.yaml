@@ -6,9 +6,12 @@ metadata:
   name: base
   namespace: argocd
 spec:
-  clusterResourceBlacklist:
-  - group: '*'
-    kind: '*'
+  # clusterResourceBlacklist:
+  # - group: '*'
+  #   kind: '*'
+  clusterResourceWhitelist:
+  - group: ''
+    kind: Namespace
   description: Projects provisioned together with Argo CD (infra deployment)
   destinations:
   - namespace: argocd
