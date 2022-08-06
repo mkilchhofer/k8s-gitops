@@ -3,7 +3,7 @@ apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: HelmRepository
 metadata:
   name: argo
-  namespace: flux-system
+  namespace: argocd
 spec:
   interval: 10m
   url: https://argoproj.github.io/argo-helm
